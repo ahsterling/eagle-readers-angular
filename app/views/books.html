@@ -1,3 +1,13 @@
 <div ng-controller="booksController">
-  <h1>{{hello}}</h1>
+
+  <div class="search">
+    <input type="text" name="some_name" ng-model="query">
+  </div>
+
+  <div ng-repeat="book in books | filter:query">
+    <h2>{{book.title}}</h2>
+    <h3>Author(s): {{book.author}}</h3>
+    <p>{{book.description}}</p>
+
+  </div>
 </div>
