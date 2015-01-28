@@ -1,0 +1,25 @@
+{
+  "name": "Eagle_Readers_Angular",
+  "version": "0.0.1",
+  "description": "My Capstone for Ada",
+  "main": "app.js",
+  "author": "Allie Sterling",
+  "dependencies": {
+    "http-server": "^0.6.1",
+    "tmp": "0.0.23",
+    "bower": "^1.3.1",
+    "shelljs": "^0.2.6"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server ../blahg -a 0.0.0.0 -p 8000",
+    "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + cat('bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5"
+  }
+}
