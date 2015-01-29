@@ -1,0 +1,29 @@
+a:hover {
+  text-decoration: none;
+}
+
+.search {
+  margin-top: 20px;
+}
+
+.book {
+  display: inline-block;
+  border: 1px solid black;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+}
+
+.navigation {
+  list-style: none;
+  display: inline-block;
+  
+}
+
+.navigation li {
+  display: inline-block;
+}
+
+.brand {
+  display: inline-block;
+}

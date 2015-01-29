@@ -28,6 +28,10 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
        'subject_array': ['economics', 'nonfiction']
       }
   ]
+
+  $scope.showBooks = function(book_id) {
+    
+  }
 }]);
 
 booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
