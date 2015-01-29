@@ -17,7 +17,7 @@ describe('Books Controller', function() {
 
    it('should create "books" model with 3 books', function() {
 
-     expect(1+2).toBe(3);
+     expect(scope.books.length).toBe(3);
 
    });
 
