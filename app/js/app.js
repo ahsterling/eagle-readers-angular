@@ -11,8 +11,9 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/views/books.html',
     })
     .state('show', {
-      url: '/books/:id',
-      templateUrl: 'app/views/books/show.html'
+      url: '/book/:id',
+      templateUrl: 'app/views/books/show.html',
+
     })
   $urlRouterProvider.otherwise('/');
 });
