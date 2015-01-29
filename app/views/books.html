@@ -1,11 +1,14 @@
 <div ng-controller="booksController" class="container-fluid">
 
   <div class="search">
-    Search Books: <input type="text" name="some_name" ng-model="query">
+    <form class="form-inline" action="index.html" method="post">
+      Search Books: <input type="text" name="some_name" ng-model="query" class="form-control">
+
+    </form>
   </div>
   <hr>
   <div ng-repeat="book in books | filter:query">
-    <h2>{{book.title}}</h2>
+    <h2><a ui-sref="show({id:book.id})">{{book.title}}</a></h2>
     <h3>Author(s): {{book.author}}</h3>
     <p>{{book.description}}</p>
 
