@@ -23,4 +23,14 @@ describe('eagleReadersApp', function() {
       expect(bookList.count()).toBe(2);
     })
   })
-})
+
+  describe('books show view', function() {
+    beforeEach(function() {
+      browser.get('/#/book/1');
+    });
+
+    it('should display book page', function() {
+      expect(element(by.binding('title')).getText()).toBe('The Grapes of Wrath');
+    });
+  });
+});
