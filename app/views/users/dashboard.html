@@ -1,5 +1,28 @@
 <div ng-controller="userController">
   <div class="container-fluid">
+
+    <div ui-view="badges">
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 my-books">
+        <h2>My Books:</h2>
+        <div ng-include="'app/views/users/my_books.html'">
+
+        </div>
+      </div>
+      <div class="col-sm-4 leaderboard">
+        <h2>Leaderboard:</h2>
+      </div>
+      <div class="col-sm-4 my badges">
+        <h2>My badges:</h2>
+
+        <div ng-include="'app/views/badges/my_badges.html'"></div>
+
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-sm-12">
         <form class="form" action="index.html" method="post">
@@ -12,17 +35,6 @@
         </form>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-4 my-books">
-        <h2>My Books</h2>
-      </div>
-      <div class="col-sm-4 leaderboard">
-        <h2>Leaderboard</h2>
-      </div>
-      <div class="col-sm-4 my badges">
-        <h2>My badges</h2>
 
-      </div>
-    </div>
   </div>
 </div>
