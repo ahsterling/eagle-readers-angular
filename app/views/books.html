@@ -1,9 +1,9 @@
-<div ng-controller="booksController">
+<div ng-controller="booksController" class="container-fluid">
 
   <div class="search">
-    <input type="text" name="some_name" ng-model="query">
+    Search Books: <input type="text" name="some_name" ng-model="query">
   </div>
-
+  <hr>
   <div ng-repeat="book in books | filter:query">
     <h2>{{book.title}}</h2>
     <h3>Author(s): {{book.author}}</h3>
