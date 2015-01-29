@@ -26,3 +26,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
       }
   ]
 }]);
+
+booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
+  $scope.control = "the Book Controller";
+}]);
