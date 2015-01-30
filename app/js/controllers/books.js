@@ -31,6 +31,9 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
 
   $scope.subject = "";
 
+  $scope.setQueryType = function(type) {
+  };
+
 }]);
 
 booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
