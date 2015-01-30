@@ -29,9 +29,8 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
       }
   ]
 
-  $scope.showBooks = function(book_id) {
-    
-  }
+  $scope.subject = "";
+
 }]);
 
 booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {

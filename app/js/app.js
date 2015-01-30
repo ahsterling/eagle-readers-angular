@@ -3,7 +3,8 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'ui.router',
   'booksControllerModule',
   'usersControllerModule',
-  'badgesControllerModule'
+  'badgesControllerModule',
+  'filtersModule'
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {

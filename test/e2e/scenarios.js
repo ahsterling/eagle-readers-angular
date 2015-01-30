@@ -33,4 +33,5 @@ describe('eagleReadersApp', function() {
       expect(element(by.binding('title')).getText()).toBe('The Grapes of Wrath');
     });
   });
+  
 });
