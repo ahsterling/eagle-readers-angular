@@ -17,11 +17,17 @@
     </div>
 
     <div class="col-sm-5">
+      <ul>
+        <div class ="book" ng-repeat="book in books | filter:query | subject:subject ">
+          <li>
+            <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
+          </li>
+          <li>
+            <h4>Author(s): {{book.author}}</h4>
+          </li>
+        </div>
 
-      <div class ="book" ng-repeat="book in books | filter:query | subject:subject ">
-        <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
-        <h4>Author(s): {{book.author}}</h4>
-      </div>
+      </ul>
 
     </div>
 
