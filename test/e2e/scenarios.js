@@ -21,6 +21,19 @@ describe('eagleReadersApp', function() {
       query.clear();
       query.sendKeys('lor');
       expect(bookList.count()).toBe(2);
+    });
+
+    it('should filter the book list as a user selects subject from drop down', function() {
+      var bookList = element.all(by.repeater('book in books'));
+      var subject = element(by.model('subject'));
+      var dropdown = element(by.id('subject-dropdown'));
+      expect(bookList.count()).toBe(3);
+
+      element(by.cssContainingText('option', 'fiction')).click();
+
+      expect(bookList.count()).toBe(2);
+
+
     })
   })
 
