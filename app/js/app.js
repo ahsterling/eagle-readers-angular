@@ -36,6 +36,14 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.badges.detail', {
+      url: '/:id',
+      views: {
+        'show': {
+          templateUrl: 'app/views/badges/badge_show.html'
+        }
+      }
+    })
     .state('app.books', {
       url: 'books',
       views: {
