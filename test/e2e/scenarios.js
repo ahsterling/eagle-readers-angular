@@ -47,4 +47,30 @@ describe('eagleReadersApp', function() {
     });
   });
 
+  describe('badges index view', function() {
+    beforeEach(function() {
+      browser.get('/#/badges');
+    });
+
+    it('should display badges list', function() {
+      expect(element(by.binding('title')).getText()).toBe('Genre Explorer');
+    });
+
+    it('should filter genres as a user types in the search box', function() {
+      var badgeList = element.all(by.repeater('badge in badges'));
+
+      var query = element(by.model('query'));
+
+      expect(badgeList.count()).toBe(3);
+
+      query.sendKeys('genre');
+      expect(badgeList.count()).toBe(1);
+
+      query.clear();
+      query.sendKeys('list');
+      expect(badgeList.count()).toBe(1);
+
+    });
+  })
+
 });
