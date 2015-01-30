@@ -55,7 +55,7 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
     .state('app.books.detail', {
       url: '/:id',
       views: {
-        'content@': {
+        'show': {
           templateUrl: 'app/views/books/show.html'
         }
       }

@@ -19,17 +19,7 @@ describe('badgesController',function() {
 
 describe('badgeController', function() {
 
-  var scope, ctrl;
-
-  beforeEach(module('badgesControllerModule'));
-
-  beforeEach(inject(function($controller) {
-   scope = {};
-   ctrl = $controller('badgeController', {$scope: scope, $stateParams: {"id": "1"}});
- }));
-
- it('sc')
 
 
 
-})
+});
