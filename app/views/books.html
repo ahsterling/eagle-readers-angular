@@ -19,7 +19,7 @@
     <div class="col-sm-9">
 
       <div class ="book" ng-repeat="book in books | filter:query | subject:subject ">
-        <h3><a ui-sref="show({id:book.id})">{{book.title}}</a></h3>
+        <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
         <h4>Author(s): {{book.author}}</h4>
       </div>
 

@@ -1,5 +1,7 @@
 <div ng-controller="booksController">
   <div ng-repeat="book in books">
-    {{book.title}}
+    <p ui-sref="app.books.detail({id:book.id})">
+      {{book.title}}
+    </p>
   </div>
 </div>
