@@ -10,15 +10,6 @@
         <input type="text" ng-model="query.author" class="form-control">
         Search books by description:
         <input type="text" ng-model="query.description" class="form-control">
-        <!-- <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-click="" ng-model="query.title"> title
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="query.author"> author
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="query.description"> description
-        </label> -->
       </form>
       <hr>
 
@@ -35,7 +26,7 @@
 
     <div class="col-sm-5">
       <ul>
-        <div class ="book" ng-repeat="book in books | filter:query:strict | subject:subject ">
+        <div class ="book" ng-repeat="book in books | filter:query:strict ">
           <li>
             <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
           </li>
