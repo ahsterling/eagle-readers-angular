@@ -2,27 +2,36 @@
 <div ng-controller="booksController" class="container-fluid">
   <div class="row">
     <div class="search col-sm-3">
-      <form class="form">
+      <form class="form" ng-hide="results">
         <!-- Search books by title, content, or description:
         <input type="text" ng-model="query" class="form-control"><br> -->
         Search books by title:
         <input type="text" ng-model="query.title" class="form-control">
         Search books by author:
         <input type="text" ng-model="query.author" class="form-control">
-        Search books by description:
-        <input type="text" ng-model="query.description" class="form-control">
+        <!-- Search books by description:
+        <input type="text" ng-model="query.description" class="form-control"> -->
+        <button class='btn btn-default' ng-click ="bookSearch()">Search</button>
+        {{query}}
       </form>
-      <button class='btn btn-default' ng-click ="bookSearch()">Search</button>
-      <hr>
-      {{query}}
 
-      Filter by Subject:
-      <select ng-model="subject" class="form-control" id="subject-dropdown">
-        <option value="">All</option>
-        <option value="fiction">fiction</option>
-        <option value="history">history</option>
-        <option value="economics">economics</option>
-      </select>
+
+
+      <div id="filter" ng-hide="!results">
+        Filter Results:
+        By title: <input type="text" ng-model="query.title" class="form-control">
+        By author:<input type="text" ng-model="query.author" class="form-control">
+        Filter by Subject:
+        <select ng-model="subject" class="form-control" id="subject-dropdown">
+          <option value="">All</option>
+          <option value="fiction">fiction</option>
+          <option value="history">history</option>
+          <option value="economics">economics</option>
+        </select>
+        <button ng-click="resetSearch()">New Search!</button>
+      </div>
+
+
 
     </div>
 

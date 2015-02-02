@@ -35,11 +35,13 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
   // ]
 
   $scope.subject = "";
+  $scope.results = false;
 
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";
 
     var titleParams, authorParams;
+
     if ($scope.query.title) {
       titleParams = $scope.query.title;
       url = url + "title=" + titleParams;
@@ -52,9 +54,16 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
 
     $http.get(url).success(function(data) {
       $scope.books = data;
+      $scope.results = true;
     });
 
   };
+
+  $scope.resetSearch = function() {
+    $scope.results = false;
+    $scope.books = [];
+    $scope.query = undefined;
+  }
 
 }]);
 
