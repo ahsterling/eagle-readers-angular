@@ -3,10 +3,9 @@ var booksControllerModule = angular.module('booksControllerModule', []);
 booksControllerModule.controller('booksController', ['$scope', '$http', function($scope, $http) {
 
   $scope.books = [];
-
-  $http.get("http://localhost:3000/books").success(function(data) {
-    $scope.books = data
-  });
+  // $http.get("http://localhost:3000/books", {cache: true}).success(function(data) {
+  //   $scope.books = data
+  // });
   // $scope.books = [
   //     {'id': 1,
   //       'title': 'The Grapes of Wrath',
@@ -37,7 +36,24 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
 
   $scope.subject = "";
 
-  $scope.setQueryType = function(type) {
+  $scope.bookSearch = function() {
+    var url = "http://localhost:3000/books/search?";
+
+    var titleParams, authorParams;
+    if ($scope.query.title) {
+      titleParams = $scope.query.title;
+      url = url + "title=" + titleParams;
+    }
+
+    if ($scope.query.author) {
+      authorParams = $scope.query.author;
+      url = url + "&author=" + authorParams;
+    }
+
+    $http.get(url).success(function(data) {
+      $scope.books = data;
+    });
+
   };
 
 }]);
