@@ -4,7 +4,9 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'booksControllerModule',
   'usersControllerModule',
   'badgesControllerModule',
-  'filtersModule'
+  'filtersModule',
+  'ng-token-auth',
+  'ipCookie'
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
