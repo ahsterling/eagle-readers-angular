@@ -10,8 +10,13 @@
     <script src="app/js/controllers/users.js"></script>
     <script src="app/js/controllers/badges.js"></script>
     <script src="app/js/filters.js"></script>
+    <script src="app/js/controllers/user_sessions.js"></script>
+    <script src="bower_components/angular-cookie/angular-cookie.js"></script>
+    <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
   </head>
   <body>
+    <li ng-show="!user.id"><a ng-href="/sign_in">Sign in</a></li>
+    <li ng-show="user.id"><a ng-click='signOut()'>Sign out</a></li>
     <div ui-view="header"></div>
     <div ui-view="content"></div>
   </body>

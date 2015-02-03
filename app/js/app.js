@@ -4,7 +4,10 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'booksControllerModule',
   'usersControllerModule',
   'badgesControllerModule',
-  'filtersModule',
+  'userSessionsModule',
+
+  'ng-token-auth',
+  'ipCookie'
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
@@ -13,7 +16,8 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
       url: '/',
       views: {
         'header': {
-          templateUrl: 'app/views/layout/header.html'
+          templateUrl: 'app/views/layout/header.html',
+          controller: 'userSessionsController'
         },
         'content': {
             templateUrl: 'app/views/users/login.html'
