@@ -1,17 +1,23 @@
 var badgesControllerModule = angular.module('badgesControllerModule', []);
 
-badgesControllerModule.controller('badgesController', ['$scope', function($scope) {
-  $scope.badges = [
-    {title: "Genre Explorer",
-    description: "Read three books from the same genre",
-    id: 1},
-    {title: "Poetry Slam",
-    description: "Read a poetry book",
-    id: 2},
-    {title: "Eagles Read",
-    description: "Read a book from the Eagles Read list",
-    id: 3}
-  ]
+badgesControllerModule.controller('badgesController', ['$scope', '$http', function($scope, $http) {
+
+  $http.get('http://localhost:3000/genre_badges')
+    .success(function(data) {
+      $scope.badges = data;
+    });
+
+//   $scope.badges = [
+//     {title: "Genre Explorer",
+//     description: "Read three books from the same genre",
+//     id: 1},
+//     {title: "Poetry Slam",
+//     description: "Read a poetry book",
+//     id: 2},
+//     {title: "Eagles Read",
+//     description: "Read a book from the Eagles Read list",
+//     id: 3}
+//   ]
 }]);
 
 badgesControllerModule.controller('badgeController', ['$scope', '$stateParams', function($scope, $stateParams) {
