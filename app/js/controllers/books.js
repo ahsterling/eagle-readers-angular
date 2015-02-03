@@ -8,38 +8,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   $http.get("http://localhost:3000/subjects").success(function(data) {
     $scope.subjects = data;
   });
-  // $http.get("http://localhost:3000/books", {cache: true}).success(function(data) {
-  //   $scope.books = data
-  // });
-  // $scope.books = [
-  //     {'id': 1,
-  //       'title': 'The Grapes of Wrath',
-  //       'author': 'Steinbeck, John',
-  //       'isbn': 0143039431,
-  //       'description': 'First published in 1939, Steinbeck’s Pulitzer Prize-winning epic of the Great Depression chronicles the Dust Bowl migration of the 1930s and tells the story of one Oklahoma farm family, the Joadsdriven from their homestead and forced to travel west to the promised land of California. Out of their trials and their repeated collisions against the hard realities of an America divided into Haves and Have-Nots evolves a drama that is intensely human yet majestic in its scale and moral vision, elemental yet plainspoken, tragic but ultimately stirring in its human dignity. A portrait of the conflict between the powerful and the powerless, of one man’s fierce reaction to injustice, and of one woman’s stoical strength, the novel captures the horrors of the Great Depression and probes into the very nature of equality and justice in America. At once a naturalistic epic, captivity narrative, road novel, and transcendental gospel, Steinbeck’s powerful landmark novel is perhaps the most American of American Classics.',
-  //       'pages': 464,
-  //       'pub_date': "04-06-14",
-  //       'subject_array': ['fiction', 'history'] },
-  //     {'id': 2,
-  //       'title': "Harry Potter and the Sorcerer's Stone",
-  //      'author': "Rowling, J.K.",
-  //      'isbn': 473847549,
-  //      'description': "Harry heads off to magic boarding school.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  //      'pages': 244,
-  //      'pub_date': "05-04-98",
-  //      'subject_array': ['fiction', 'fantasy', 'magic'] },
-  //     {'id': 3,
-  //       'title': "Freakonomics",
-  //      'author': 'Levitt, Steven D., Dubner, Stephen J.',
-  //      'isbn': 0060731338,
-  //      'description': "Freakonomics is a groundbreaking collaboration between Levitt and Stephen J. Dubner, an award-winning author and journalist. They set out to explore the inner workings of a crack gang, the truth about real estate agents, the secrets of the Ku Klux Klan, and much more. ",
-  //      'pages': 315,
-  //      'pub_date': "08-15-2009",
-  //      'subject_array': ['economics', 'nonfiction']
-  //     }
-  // ]
 
-  // $scope.subject = "";
   $scope.results = false;
 
   $scope.bookSearch = function() {
@@ -89,6 +58,17 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
   $http.get("http://localhost:3000/books/" + $stateParams.id).success(function(data) {
     $scope.book = data
   });
+
+  $scope.user = {id: 1, email: "a@a.com"}
+
+  $scope.addBook = function() {
+    console.log($scope.book.id);
+    console.log($scope.user.id);
+    $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id})
+      .success(function(status) {
+        console.log("woo");
+      });
+  };
 
   //
   // $scope.books = [
