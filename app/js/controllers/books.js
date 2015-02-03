@@ -1,8 +1,13 @@
 var booksControllerModule = angular.module('booksControllerModule', []);
 
-booksControllerModule.controller('booksController', ['$scope', '$http', function($scope, $http) {
+booksControllerModule.controller('booksController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
   $scope.books = [];
+  $scope.subjects = [];
+
+  $http.get("http://localhost:3000/subjects").success(function(data) {
+    $scope.subjects = data;
+  });
   // $http.get("http://localhost:3000/books", {cache: true}).success(function(data) {
   //   $scope.books = data
   // });
@@ -34,25 +39,32 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
   //     }
   // ]
 
-  $scope.subject = "";
+  // $scope.subject = "";
   $scope.results = false;
 
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";
 
-    var titleParams, authorParams;
+    var titleParams, authorParams, subjectParams;
 
-    if ($scope.query.title) {
-      titleParams = $scope.query.title;
+    if ($scope.search.title) {
+      titleParams = $scope.search.title;
       url = url + "title=" + titleParams;
     }
 
-    if ($scope.query.author) {
-      authorParams = $scope.query.author;
+    if ($scope.search.author) {
+      authorParams = $scope.search.author;
       url = url + "&author=" + authorParams;
     }
 
+    if ($scope.search.subject) {
+      subjectParams = $scope.search.subject;
+      url = url + "&subject=" + subjectParams;
+    }
+
+    console.log(url);
     $http.get(url).success(function(data) {
+      console.log(data)
       $scope.books = data;
       $scope.results = true;
     });
@@ -62,7 +74,8 @@ booksControllerModule.controller('booksController', ['$scope', '$http', function
   $scope.resetSearch = function() {
     $scope.results = false;
     $scope.books = [];
-    $scope.query = undefined;
+    $scope.search = undefined;
+    // $location.path('/books');
   }
 
 }]);

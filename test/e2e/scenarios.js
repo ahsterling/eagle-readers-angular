@@ -8,30 +8,37 @@ describe('eagleReadersApp', function() {
       browser.get('/#/books');
     });
 
-    it('should filter the book list as a user types in the search box', function() {
+    it('should perform a search for books by title', function() {
       var bookList = element.all(by.repeater('book in books'));
 
-      var query = element(by.model('query'));
+      var query = element(by.model('search.title'));
+      var queryAuthor = element(by.model('search.author'));
+      var submit = element(by.id('submit-search'));
+      expect(bookList.count()).toBe(0);
 
-      expect(bookList.count()).toBe(3);
+      query.sendKeys('charlie');
+      submit.click();
+      expect(bookList.count()).toBe(12);
 
-      query.sendKeys('harry');
-      expect(bookList.count()).toBe(1);
-
+      browser.get('/#/books');
       query.clear();
-      query.sendKeys('lor');
+      queryAuthor.sendKeys('sterling');
+      submit.click();
       expect(bookList.count()).toBe(2);
     });
 
+
     it('should filter the book list as a user selects subject from drop down', function() {
       var bookList = element.all(by.repeater('book in books'));
-      var subject = element(by.model('subject'));
+      var subject = element(by.model('search.subject'));
       var dropdown = element(by.id('subject-dropdown'));
+      var submit = element(by.id('submit-search'));
+
+      expect(bookList.count()).toBe(0);
+
+      element(by.cssContainingText('option', 'Volcanoes')).click();
+      submit.click();
       expect(bookList.count()).toBe(3);
-
-      element(by.cssContainingText('option', 'fiction')).click();
-
-      expect(bookList.count()).toBe(2);
 
 
     })
@@ -43,7 +50,7 @@ describe('eagleReadersApp', function() {
     });
 
     it('should display book page', function() {
-      expect(element(by.binding('title')).getText()).toBe('The Grapes of Wrath');
+      expect(element(by.binding('title')).getText()).toBe('Volcano : the eruption and healing of Mount St. Helens / Add it!');
     });
   });
 
