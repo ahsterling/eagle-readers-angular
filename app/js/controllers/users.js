@@ -8,4 +8,9 @@ usersControllerModule.controller('userController', ['$scope', '$http', function(
       $scope.books = data;
     });
 
+  $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
+    .success(function(data) {
+      $scope.badges = data;
+    });
+
 }]);

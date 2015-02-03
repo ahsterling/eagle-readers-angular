@@ -24,7 +24,7 @@ describe('userController', function() {
  it('should create books model with 2 books', function() {
    $httpBackend.flush();
    expect(scope.books.length).toBe(2);
- })
+ });
 
 
-})
+});
