@@ -4,12 +4,19 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'booksControllerModule',
   'usersControllerModule',
   'badgesControllerModule',
+  'userSessionsControllerModule',
   'filtersModule',
   'ng-token-auth',
   'ipCookie'
 ]);
 
-eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
+
+
+eagleReadersApp.config(function($authProvider, $stateProvider, $urlRouterProvider) {
+    $authProvider.configure({
+      apiUrl: 'http://localhost:3000/api'
+    });
+
     $stateProvider
     .state('app', {
       url: '/',
@@ -19,6 +26,14 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
         },
         'content': {
             templateUrl: 'app/views/users/login.html'
+        }
+      }
+    })
+    .state('sign_in', {
+      url: '/sign_in',
+      views: {
+        'content': {
+          templateUrl:'app/views/user_sessions/new.html'
         }
       }
     })
@@ -62,5 +77,6 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
   $urlRouterProvider.otherwise('/');
 });
