@@ -20,18 +20,19 @@ badgesControllerModule.controller('badgesController', ['$scope', '$http', functi
 //   ]
 }]);
 
-badgesControllerModule.controller('badgeController', ['$scope', '$stateParams', function($scope, $stateParams) {
-  $scope.badges = [
-    {title: "Genre Explorer",
-    description: "Read three books from the same genre",
-    id: 1},
-    {title: "Poetry Slam",
-    description: "Read a poetry book",
-    id: 2},
-    {title: "Eagles Read",
-    description: "Read a book from the Eagles Read list",
-    id: 3}
-  ]
+badgesControllerModule.controller('badgeController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
+
+  $http.get('http://localhost:3000/genre_badges/' + $stateParams.id)
+    .success(function(data) {
+      $scope.badge = data;
+    });
+
+  // $scope.badges = [];
+  // $http.get('http://localhost:3000/genre_badges')
+  //   .success(function(data) {
+  //     $scope.badges = data;
+  //   });
+
 
   $scope.getBadge = function(badge_id) {
 
@@ -46,6 +47,6 @@ badgesControllerModule.controller('badgeController', ['$scope', '$stateParams', 
   $scope.stateParams = $stateParams
   $scope.id = $stateParams.id;
   $scope.hello = "hey!"
-  $scope.badge = $scope.getBadge($stateParams.id);
+  // $scope.badge = $scope.getBadge($stateParams.id);
 
 }]);
