@@ -87,7 +87,7 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id})
       .success(function(status) {
         console.log("woo");
-        // $scope.hasBook = true;
+        $scope.hasBook = true;
       });
   };
 
