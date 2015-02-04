@@ -17,6 +17,8 @@ describe('userController', function() {
    $stateParams.id = 1;
    $httpBackend.when('GET', 'http://localhost:3000/users/' + $stateParams.id + "/books").
       respond([{title: 'The Great Gatsby'}, {title: 'Looking for Alaska'}]);
+    $httpBackend.when('GET', 'http://localhost:3000/users/' + $stateParams.id + "/badges").
+      respond([{genre_name: "Mystery"}])
    scope = $rootScope.$new();
    ctrl = $controller('userController', {$scope: scope});
  }));

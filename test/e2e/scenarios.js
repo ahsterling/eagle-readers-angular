@@ -60,7 +60,7 @@ describe('eagleReadersApp', function() {
     });
 
     it('should display badges list', function() {
-      expect(element(by.binding('title')).getText()).toBe('Genre Explorer');
+      expect(element(by.binding('genre_name')).getText()).toBe('Animals');
     });
 
     it('should filter genres as a user types in the search box', function() {
@@ -68,13 +68,13 @@ describe('eagleReadersApp', function() {
 
       var query = element(by.model('query'));
 
-      expect(badgeList.count()).toBe(3);
+      expect(badgeList.count()).toBe(10);
 
-      query.sendKeys('genre');
-      expect(badgeList.count()).toBe(1);
+      query.sendKeys('graph');
+      expect(badgeList.count()).toBe(2);
 
       query.clear();
-      query.sendKeys('list');
+      query.sendKeys('ani');
       expect(badgeList.count()).toBe(1);
 
     });

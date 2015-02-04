@@ -20,7 +20,7 @@ describe('badgesController',function() {
 
  it('should create "badges" model with 3 badges', function() {
    $httpBackend.flush();
-   expect(scope.badges.length).toBe(2);
+   expect(scope.badges.length).toBe(10);
  });
 
 });
@@ -42,7 +42,7 @@ describe('badgeController', function() {
    ctrl = $controller('badgeController', {$scope: scope});
  }));
 
- it('should creage badge model', function() {
+ it('should create badge model', function() {
    $httpBackend.flush();
    expect(scope.badge.genre_name).toBe("Mystery");
  })
