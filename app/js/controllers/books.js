@@ -50,16 +50,36 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 }]);
 
 booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
-  $scope.control = "the Book Controller";
   $scope.id = $stateParams.id;
 
-  $scope.book = {}
+  $scope.book = {};
 
   $http.get("http://localhost:3000/books/" + $stateParams.id).success(function(data) {
-    $scope.book = data
+    $scope.book = data;
   });
 
-  $scope.user = {id: 1, email: "a@a.com"}
+  $scope.user = {id: 6, email: "c@c.com"}
+  $scope.userBooks = [];
+
+
+  $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+    .success(function(data) {
+      $scope.userBooks = data;
+      $scope.hasBook = $scope.userHasBook();
+    });
+
+
+  $scope.userHasBook = function() {
+    var userHasBook = false;
+    for (var i = 0; i < $scope.userBooks.length; i++) {
+      if ( $scope.userBooks[i].id === $scope.book.id ) {
+        userHasBook = true;
+      }
+    };
+    return userHasBook;
+  };
+
+  // $scope.hasBook = $scope.userHasBook();
 
   $scope.addBook = function() {
     console.log($scope.book.id);
@@ -67,8 +87,10 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id})
       .success(function(status) {
         console.log("woo");
+        // $scope.hasBook = true;
       });
   };
+
 
   //
   // $scope.books = [
