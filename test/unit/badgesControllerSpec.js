@@ -20,7 +20,7 @@ describe('badgesController',function() {
 
  it('should create "badges" model with 3 badges', function() {
    $httpBackend.flush();
-   expect(scope.badges.length).toBe(10);
+   expect(scope.badges.length).toBe(2);
  });
 
 });
