@@ -13,4 +13,28 @@ usersControllerModule.controller('userController', ['$scope', '$http', function(
       $scope.badges = data;
     });
 
+
+  $scope.bookSearch = function() {
+    var url = "http://localhost:3000/books/search?";
+
+    var titleParams, authorParams;
+
+    if ($scope.query.title) {
+      titleParams = $scope.query.title;
+      url = url + "title=" + titleParams;
+    }
+
+    if ($scope.query.author) {
+      authorParams = $scope.query.author;
+      url = url + "&author=" + authorParams;
+    }
+
+    console.log(url);
+    $http.get(url).success(function(data) {
+      console.log(data)
+      // $scope.books = data;
+      // $scope.results = true;
+    });
+  }
+
 }]);

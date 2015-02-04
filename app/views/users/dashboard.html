@@ -12,29 +12,36 @@
 
         </div>
       </div>
-      <div class="col-sm-4 leaderboard">
-        <h2>Leaderboard:</h2>
-      </div>
+
       <div class="col-sm-4 my badges">
         <h2>My badges:</h2>
 
         <div ng-include="'app/views/badges/my_badges.html'"></div>
 
       </div>
+
+      <div class="col-sm-4 leaderboard">
+        <h2>Leaderboard:</h2>
+      </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-sm-12">
-        <form class="form-inline" action="index.html" method="post">
+        <form ng-submit="bookSearch()" class="form-inline">
           <div class="form-group">
             <label>Add a book:</label>
-            <input type="text" class="form-control">
-
+            Search by title:
+            <input ng-model="query.title" class="form-control">
+            Search by author:
+            <input ng-model="query.author" class="form-control">
+            <input type="submit"></button>
+            {{query}}
           </div>
 
         </form>
+
       </div>
-    </div>
+    </div> -->
 
   </div>
 </div>

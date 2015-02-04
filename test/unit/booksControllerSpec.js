@@ -40,7 +40,7 @@ describe('Books Controller', function() {
  })
 
  describe('bookController', function() {
-   var scope, ctrl, $httpBackend;
+   var scope, ctrl, user, $httpBackend;
 
    beforeEach(module('eagleReadersApp'));
    beforeEach(module('booksControllerModule'));
@@ -48,23 +48,31 @@ describe('Books Controller', function() {
    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, $stateParams) {
      $httpBackend = _$httpBackend_;
      $stateParams.id = 1;
+     user = {id: 6};
+
+     
 
      $httpBackend.when('GET', 'http://localhost:3000/books/'+ $stateParams.id).
         respond({title: 'The Great Gatsby'});
+
+     $httpBackend.when('GET', 'http://localhost:3000/books/' + $stateParams.id + '/subjects').
+        respond({name: "Fiction"});
+
+     $httpBackend.when('GET', 'http://localhost:3000/users/' + user.id + '/books').
+        respond([{title: "The Great Gatsby"}, {title: "The Fault in Our Stars"}]);
+
      scope = $rootScope.$new();
      ctrl = $controller('bookController', {$scope: scope});
    }));
 
-
-  //  beforeEach(inject(function($controller, $stateParams) {
-  //    scope = {};
-  //    $stateParams.id = 1;
-  //    ctrl = $controller('bookController', {$scope: scope});
-  //  }));
-
    it('should create "book" model', function() {
      $httpBackend.flush();
      expect(scope.book.title).toBe("The Great Gatsby");
-   })
- })
+   });
+
+   it('should get that books subjects', function() {
+     $httpBackend.flush();
+     expect(scope.subjects.length).toBe(1);
+   });
+ });
 });

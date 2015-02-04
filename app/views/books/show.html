@@ -9,11 +9,15 @@
     <h4>pages: {{book.pages}}</h4>
 
     <h3>Subjects:</h3>
-      <span ng-repeat="subject in subjects">
-        <p>
-          {{subject.name}}
-        </p>
-      </span>
+    <span ng-repeat="subject in book.subject_array">
+      <p>
+        {{subject}}
+      </p>
+    </span>
+    <h3>Genre</h3>
+    <p>
+      {{book.genre}}
+    </p>
   </div>
 
 </div>
