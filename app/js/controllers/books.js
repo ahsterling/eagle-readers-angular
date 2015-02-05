@@ -3,10 +3,10 @@ var booksControllerModule = angular.module('booksControllerModule', []);
 booksControllerModule.controller('booksController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
   $scope.books = [];
-  $scope.subjects = [];
+  $scope.genres = [];
 
-  $http.get("http://localhost:3000/subjects").success(function(data) {
-    $scope.subjects = data;
+  $http.get("http://localhost:3000/genres").success(function(data) {
+    $scope.genres = data;
   });
 
   $scope.results = false;
@@ -14,7 +14,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";
 
-    var titleParams, authorParams, subjectParams;
+    var titleParams, authorParams, genreParams;
 
     if ($scope.search.title) {
       titleParams = $scope.search.title;
@@ -26,9 +26,9 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
       url = url + "&author=" + authorParams;
     }
 
-    if ($scope.search.subject) {
-      subjectParams = $scope.search.subject;
-      url = url + "&subject=" + subjectParams;
+    if ($scope.search.genre) {
+      genreParams = $scope.search.genre;
+      url = url + "&genre=" + genreParams;
     }
 
     console.log(url);
@@ -59,7 +59,7 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     getBookSubjects();
   });
 
-  $scope.user = {id: 6, email: "c@c.com"}
+  $scope.user = {id: 1, email: "c@c.com"}
   $scope.userBooks = [];
 
 
@@ -93,7 +93,7 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
   $scope.addBook = function() {
     console.log($scope.book.id);
     console.log($scope.user.id);
-    $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id})
+    $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
       .success(function(status) {
         console.log("woo");
         $scope.hasBook = true;

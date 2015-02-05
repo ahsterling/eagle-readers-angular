@@ -1,4 +1,4 @@
- 
+
 <div ng-controller="booksController" class="container-fluid">
   <div class="row">
     <div class="search col-sm-3">
@@ -9,9 +9,9 @@
         <input type="text" ng-model="search.title" class="form-control">
         Search books by author:
         <input type="text" ng-model="search.author" class="form-control">
-        Search by subject:
-        <select ng-model="search.subject" class="form-control">
-          <option ng-repeat="subject in subjects" value="{{subject.name}}">{{subject.name}}</option>
+        Search by genre:
+        <select ng-model="search.genre" class="form-control">
+          <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
         </select>
         <!-- Search books by description:
         <input type="text" ng-model="query.description" class="form-control"> -->
@@ -25,7 +25,7 @@
 
     </div>
 
-    <div class="col-sm-5">
+    <div class="col-sm-5" ng-hide="books.length === 0">
       <div id="filter" ng-hide="!results">
         Filter Results:
         By title: <input type="text" ng-model="query.title" class="form-control">

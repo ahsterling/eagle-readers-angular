@@ -4,6 +4,7 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'booksControllerModule',
   'usersControllerModule',
   'badgesControllerModule',
+  'loginControllerModule',
   'filtersModule',
 ]);
 
