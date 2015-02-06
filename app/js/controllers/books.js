@@ -51,7 +51,6 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
 booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope) {
   $scope.id = $stateParams.id;
-
   $scope.book = {};
 
   $http.get("http://localhost:3000/books/" + $stateParams.id).success(function(data) {

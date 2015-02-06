@@ -34,7 +34,7 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         'content@': {
           templateUrl: 'app/views/users/dashboard.html'
         }
-      },
+      }
 
     })
     .state('app.badges', {
