@@ -5,14 +5,16 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'usersControllerModule',
   'badgesControllerModule',
   'loginControllerModule',
+  'indexControllerModule',
   'filtersModule',
-  'ng-token-auth'
+  'ng-token-auth',
+  'ipCookie'
 
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     $authProvider.configure({
-      apiUrl: 'http://localhost:3000'
+      apiUrl:  'http://localhost:3000'
     })
     $stateProvider
     .state('app', {
@@ -32,7 +34,8 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         'content@': {
           templateUrl: 'app/views/users/dashboard.html'
         }
-      }
+      },
+
     })
     .state('app.badges', {
       url: 'badges',

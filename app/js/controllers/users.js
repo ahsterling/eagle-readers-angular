@@ -1,8 +1,17 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
-usersControllerModule.controller('userController', ['$scope', '$http', function($scope, $http) {
-  $scope.user = {id: 1, email: 'a@a.com'}
+usersControllerModule.controller('userController', ['$scope', '$rootScope', '$http', '$auth', function($scope, $rootScope, $http, $auth) {
+  console.log($rootScope.user);
+  $scope.user = $rootScope.user;
+  // $rootScope.on('auth:validation-success', function(ev, user) {
+  //   console.log('hey');
+  // });
 
+  // $rootScope.on('auth:validation-success', function(ev, user) {
+  //   $scope.auth = user;
+  // })
+
+  // $scope.user = {id: 1, email: 'email@email.com'}
   $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
     .success(function(data) {
       $scope.books = data;
@@ -12,7 +21,6 @@ usersControllerModule.controller('userController', ['$scope', '$http', function(
     .success(function(data) {
       $scope.badges = data;
     });
-
 
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";

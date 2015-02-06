@@ -1,7 +1,7 @@
 var booksControllerModule = angular.module('booksControllerModule', []);
 
-booksControllerModule.controller('booksController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
+booksControllerModule.controller('booksController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope) {
+  $scope.user = $rootScope.user
   $scope.books = [];
   $scope.genres = [];
 
@@ -49,7 +49,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
 }]);
 
-booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
+booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope) {
   $scope.id = $stateParams.id;
 
   $scope.book = {};
@@ -59,7 +59,7 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     getBookSubjects();
   });
 
-  $scope.user = {id: 1, email: "c@c.com"}
+  $scope.user = $rootScope.user;
   $scope.userBooks = [];
 
 
