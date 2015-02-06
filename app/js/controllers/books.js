@@ -5,6 +5,15 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   $scope.books = [];
   $scope.genres = [];
 
+  $scope.user_id = localStorage.getItem('user_id')
+
+  $http.get('http://localhost:3000/users/' + $scope.user_id)
+    .success(function(data) {
+      $scope.user = data;
+
+    })
+
+
   $http.get("http://localhost:3000/genres").success(function(data) {
     $scope.genres = data;
   });
@@ -58,15 +67,22 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     getBookSubjects();
   });
 
-  $scope.user = $rootScope.user;
   $scope.userBooks = [];
 
-
-  $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+  $http.get('http://localhost:3000/users/' + $scope.user_id)
     .success(function(data) {
-      $scope.userBooks = data;
-      $scope.hasBook = $scope.userHasBook();
+      $scope.user = data;
+      getUserBooks();
     });
+
+
+  var getUserBooks = function() {
+    $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+      .success(function(data) {
+        $scope.userBooks = data;
+        $scope.hasBook = $scope.userHasBook();
+      });
+  }
 
   $scope.subjects = [];
 

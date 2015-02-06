@@ -2,7 +2,7 @@ var loginControllerModule = angular.module('loginControllerModule', []);
 
 loginControllerModule.controller('loginController', ['$scope', '$rootScope', '$http', '$auth', "$location", function($scope, $rootScope, $http, $auth, $location) {
   $scope.loginForm = {email: null, password: null};
-  
+
   // $scope.login = function() {
   //   $auth.submitLogin($scope.loginForm)
   //     .then(function(resp) {
@@ -23,6 +23,7 @@ loginControllerModule.controller('loginController', ['$scope', '$rootScope', '$h
 
   $rootScope.$on('auth:login-success', function(ev, user) {
     $rootScope.user = user;
+    localStorage.setItem('user_id', user.id)
     console.log(user);
     console.log(ev);
     console.log("Hey!");
@@ -42,4 +43,8 @@ loginControllerModule.controller('loginController', ['$scope', '$rootScope', '$h
         });
     };
 
+  $rootScope.$on('auth:registration-email-success', function(ev, user) {
+    $rootScope.user = user;
+    console.log("registered!");
+  })
 }]);

@@ -1,7 +1,11 @@
 var indexControllerModule = angular.module('indexControllerModule', []);
 
-indexControllerModule.controller('indexController', ['$scope', '$rootScope', function($scope, $rootScope) {
-  $scope.user = $rootScope.user;
+indexControllerModule.controller('indexController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+  $scope.user_id = localStorage.getItem('user_id')
+  $http.get('http://localhost:3000/users/'+ $scope.user_id)
+    .success(function(data) {
+      $scope.user = data;
+    })
 
   $scope.handleSignOutBtnClick = function() {
     $auth.signOut()
@@ -15,11 +19,11 @@ indexControllerModule.controller('indexController', ['$scope', '$rootScope', fun
 
   };
 
-  $rootScope.on('auth:logout-success', function(ev) {
-    alert("goodbye");
+  $rootScope.$on('auth:logout-success', function(ev) {
+    console.log("goodbye");
   });
 
-  $rootScope.on('auth:logout-error', function(ev, reason) {
-    alert(reason);
+  $rootScope.$on('auth:logout-error', function(ev, reason) {
+    console.log("error");
   });
 }]);

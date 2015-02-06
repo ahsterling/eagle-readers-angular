@@ -5,7 +5,18 @@ usersControllerModule.controller('userController', ['$scope', '$rootScope', '$ht
   $auth.validateUser().then(function(resp) {
 
   })
-  // $rootScope.on("auth:vl")
+
+  $scope.user_id = localStorage.getItem('user_id')
+
+  $http.get('http://localhost:3000/users/' + $scope.user_id)
+    .success(function(data) {
+      $scope.user = data;
+      getUserBooks();
+      getUserBadges();
+    })
+
+  // $scope.user = $rootScope.user;
+
   $rootScope.$on('auth:validation-success', function(ev, user) {
     console.log('auth validation');
   });
@@ -20,15 +31,19 @@ usersControllerModule.controller('userController', ['$scope', '$rootScope', '$ht
 
 
   // $scope.user = {id: 1, email: 'email@email.com'}
-  $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
-    .success(function(data) {
-      $scope.books = data;
-    });
+  var getUserBooks = function() {
+    $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
+      .success(function(data) {
+        $scope.books = data;
+      });
+  }
 
-  $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
-    .success(function(data) {
-      $scope.badges = data;
+  var getUserBadges = function() {
+    $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
+      .success(function(data) {
+        $scope.badges = data;
     });
+  }
 
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";
