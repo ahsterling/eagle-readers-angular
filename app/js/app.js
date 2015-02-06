@@ -6,9 +6,14 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'badgesControllerModule',
   'loginControllerModule',
   'filtersModule',
+  'ng-token-auth'
+
 ]);
 
-eagleReadersApp.config(function($stateProvider, $urlRouterProvider) {
+eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvider) {
+    $authProvider.configure({
+      apiUrl: 'http://localhost:3000'
+    })
     $stateProvider
     .state('app', {
       url: '/',
