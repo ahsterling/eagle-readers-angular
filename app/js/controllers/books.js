@@ -59,7 +59,7 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     getBookSubjects();
   });
 
-  $scope.user = {id: 1, email: "c@c.com"}
+  $scope.user = {id: 5, email: "c@c.com"}
   $scope.userBooks = [];
 
 
