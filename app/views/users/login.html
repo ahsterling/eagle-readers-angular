@@ -2,17 +2,34 @@
 
 
   <div class="container-fluid">
-    Username: <input type="text" name="some_name" placeholder="email">
-    Password: <input type="text" name="some_name" placeholder="password">
-    <button name="button">Submit</button>
-  </div>
 
-  <div class="body">
-    <div>Email: <input ng-model="login_user.email" /></div>
-    <div>Password: <input type="password" ng-model="login_user.password" /></div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
-    <button ng-click="login()" class="btn btn-primary" >Login</button>
-    <button ng-click="logout()" class="btn btn-primary" >Logout</button>
+
+        <form class="login form">
+          <h2>Log In</h2>
+          <hr>
+          <div class="form-group">
+            <label>Email:</label>
+            <input ng-model="login_user.email" class="form-control"/>
+
+          </div>
+
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="password" ng-model="login_user.password" class="form-control"/>
+
+          </div>
+
+
+          <button ng-click="login()" class="btn btn-primary" >Login</button>
+          <!-- <button ng-click="logout()" class="btn btn-primary" >Logout</button> -->
+
+        </form>
+
+      </div>
+    </div>
   </div>
 
 </div>

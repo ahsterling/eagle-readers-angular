@@ -1,26 +1,22 @@
 <div ng-controller="userController">
   <div class="container-fluid">
 
-    <div ui-view="badges">
-
-    </div>
-
     <div class="row">
-      <div class="col-sm-4 my-books">
+      <div class="col-xs-12 col-sm-4 my-books">
         <h2>Books I've Read:</h2>
         <div ng-include="'app/views/users/my_books.html'">
 
         </div>
       </div>
 
-      <div class="col-sm-4 my badges">
+      <div class="col-xs-12 col-sm-4 my badges">
         <h2>My badges:</h2>
 
         <div ng-include="'app/views/badges/my_badges.html'"></div>
 
       </div>
 
-      <div class="col-sm-4 leaderboard">
+      <div class="col-xs-12 col-sm-4 leaderboard">
         <h2>Leaderboard:</h2>
       </div>
     </div>
