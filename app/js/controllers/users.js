@@ -1,24 +1,25 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
 usersControllerModule.controller('userController', ['$scope', '$rootScope', '$http', '$auth', function($scope, $rootScope, $http, $auth) {
-  // $scope.user = $rootScope.user;
+  $scope.user = $rootScope.user;
   $auth.validateUser().then(function(resp) {
 
   })
 
-  $scope.user_id = localStorage.getItem('user_id')
+  // $scope.user_id = localStorage.getItem('user_id')
 
-  $http.get('http://localhost:3000/users/' + $scope.user_id)
-    .success(function(data) {
-      $scope.user = data;
-      getUserBooks();
-      getUserBadges();
-    })
+
 
   // $scope.user = $rootScope.user;
 
   $rootScope.$on('auth:validation-success', function(ev, user) {
     console.log('auth validation');
+    $http.get('http://localhost:3000/users/' + $scope.user.id)
+      .success(function(data) {
+        $scope.user = data;
+        getUserBooks();
+        getUserBadges();
+    });
   });
 
   $rootScope.$on('auth:validation-error', function(ev) {

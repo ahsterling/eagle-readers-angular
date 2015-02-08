@@ -14,7 +14,8 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     $authProvider.configure({
-      apiUrl:  'http://localhost:3000'
+      apiUrl:  'http://localhost:3000',
+      storage: 'cookies'
     })
     $stateProvider
     .state('app', {

@@ -23,10 +23,7 @@ loginControllerModule.controller('loginController', ['$scope', '$rootScope', '$h
 
   $rootScope.$on('auth:login-success', function(ev, user) {
     $rootScope.user = user;
-    localStorage.setItem('user_id', user.id)
-    console.log(user);
-    console.log(ev);
-    console.log("Hey!");
+    // localStorage.setItem('user_id', user.id)
     $location.path("/dashboard")
   })
 
