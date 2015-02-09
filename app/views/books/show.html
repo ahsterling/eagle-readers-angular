@@ -5,7 +5,7 @@
     <p ng-if="hasBook">Already in your collection!</p>
     <h3>Written by: {{book.author}}</h3>
     <p>{{book.description}}</p>
-    <h4>published: {{book.pub_date}}</h4>
+    <h4>published: {{book.pub_date | date:'yyyy'}}</h4>
     <h4>pages: {{book.pages}}</h4>
 
     <h3>Subjects:</h3>

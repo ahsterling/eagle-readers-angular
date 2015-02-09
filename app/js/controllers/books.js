@@ -39,6 +39,16 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.results = false;
 
+  // $scope.collapseResults = function() {
+  //   $scope.booksCollapsed = true;
+  // }
+  //
+  //
+  // $scope.newSearch = function() {
+  //   $scope.results = false;
+  //   $scope.books = [];
+  // }
+
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";
 
@@ -59,9 +69,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
       url = url + "&genre=" + genreParams;
     }
 
-    console.log(url);
     $http.get(url).success(function(data) {
-      console.log(data)
       $scope.books = data;
       $scope.results = true;
     });

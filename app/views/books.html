@@ -1,59 +1,70 @@
 
 <div ng-controller="booksController" class="container-fluid">
   <div class="row">
-    <div class="search col-sm-3">
+    <div class="search col-xs-12 col-sm-3">
       <form class="form">
-        {{user}}
+        <h2>Search for Books</h2>
+
         <!-- Search books by title, content, or description:
         <input type="text" ng-model="query" class="form-control"><br> -->
-        Search books by title:
-        <input type="text" ng-model="search.title" class="form-control">
-        Search books by author:
-        <input type="text" ng-model="search.author" class="form-control">
-        Search by genre:
-        <select ng-model="search.genre" class="form-control">
-          <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
-        </select>
-        <!-- Search books by description:
-        <input type="text" ng-model="query.description" class="form-control"> -->
-        <button class='btn btn-default' id="submit-search" ng-click ="bookSearch()">Search</button>
-      </form>
 
-
-
-
-
-
-    </div>
-
-    <div class="col-sm-5" ng-hide="books.length === 0">
-      <div id="filter" ng-hide="!results">
-        Filter Results:
-        By title: <input type="text" ng-model="query.title" class="form-control">
-        By author:<input type="text" ng-model="query.author" class="form-control">
-        <!-- Filter by Subject:
-        <select ng-model="query.subject" class="form-control">
-          <option ng-repeat="subject in subjects">{{subject.name}}</option>
-        </select> -->
-        <!-- <button ng-click="resetSearch()">New Search!</button> -->
-      </div>
-
-      <ul>
-        <div class ="book" ng-repeat="book in books | filter:query:strict">
-
-          <li>
-            <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
-          </li>
-          <li>
-            <h4>Author(s): {{book.author}}</h4>
-          </li>
+        <div class="form-group" >
+          <label>Search books by title:</label>
+          <input type="text" ng-model="search.title" class="form-control">
         </div>
 
-      </ul>
+        <div class="form-group">
+          <label>Search books by author:</label>
+          <input type="text" ng-model="search.author" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Search by genre:</label>
+          <select ng-model="search.genre" class="form-control">
+            <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
+          </select>
+        </div>
+
+        <button class='btn btn-default' id="submit-search" ng-click ="bookSearch()">Search</button>
+
+      </form>
 
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-xs-12 col-sm-4" ng-hide="books.length === 0">
+
+      <div class="filter" ng-hide="!results">
+        <form class="form">
+          <h2>Results</h2>
+
+          <div class="form-group">
+            <label>Filter results by title: </label>
+            <input type="text" ng-model="query.title" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Filter results by author: </label>
+            <input type="text" ng-model="query.author" class="form-control">
+          </div>
+        </form>
+
+      </div>
+
+      <div class="book-list">
+        <ul>
+          <div class="book" ng-repeat="book in books | filter:query:strict">
+            <li>
+              <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
+            </li>
+            <li>
+              <h4>Author(s): {{book.author}}</h4>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-5">
       <div ui-view="show">
 
       </div>

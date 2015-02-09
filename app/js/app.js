@@ -1,6 +1,7 @@
 
 var eagleReadersApp = angular.module('eagleReadersApp', [
   'ui.router',
+  'ui.bootstrap',
   'booksControllerModule',
   'usersControllerModule',
   'badgesControllerModule',
@@ -8,7 +9,8 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'indexControllerModule',
   'filtersModule',
   'ng-token-auth',
-  'ipCookie'
+  'ipCookie',
+  'matchMedia'
 
 ]);
 
