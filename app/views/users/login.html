@@ -5,7 +5,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
 
-        <form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
+        <form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}"class="login form">
+          <h2>Log In</h2>
+          <hr>
           <div class="form-group">
             <label>email</label>
             <input name="email" ng-model="loginForm.email" required="required" class="form-control"/>
@@ -20,9 +22,10 @@
         </form>
       </div>
 
-      <div class="col-sm-5 col-xs-12">
-
-        <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}">
+      <div class="col-sm-6 col-xs-12">
+        <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}"class="login form">
+          <h2>Register</h2>
+          <hr>
           <div class="form-group">
             <label>email</label>
             <input name="email" ng-model="registrationForm.email" required="required" class="form-control"/>
