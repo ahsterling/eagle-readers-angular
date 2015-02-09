@@ -1,18 +1,50 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
-usersControllerModule.controller('userController', ['$scope', '$http', function($scope, $http) {
-  $scope.user = {id: 1, email: 'a@a.com'}
+usersControllerModule.controller('userController', ['$scope', '$rootScope', '$http', '$auth', function($scope, $rootScope, $http, $auth) {
+  $scope.user = $rootScope.user;
+  $auth.validateUser().then(function(resp) {
 
-  $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
-    .success(function(data) {
-      $scope.books = data;
+  })
+
+  // $scope.user_id = localStorage.getItem('user_id')
+
+
+
+  // $scope.user = $rootScope.user;
+
+  $rootScope.$on('auth:validation-success', function(ev, user) {
+    console.log('auth validation');
+    $http.get('http://localhost:3000/users/' + $scope.user.id)
+      .success(function(data) {
+        $scope.user = data;
+        getUserBooks();
+        getUserBadges();
     });
+  });
 
-  $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
-    .success(function(data) {
-      $scope.badges = data;
+  $rootScope.$on('auth:validation-error', function(ev) {
+    console.log('errrrooorr');
+  })
+
+  $rootScope.$on('auth:invalid', function(ev) {
+    console.log('auth:invalid')
+  })
+
+
+  // $scope.user = {id: 1, email: 'email@email.com'}
+  var getUserBooks = function() {
+    $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
+      .success(function(data) {
+        $scope.books = data;
+      });
+  }
+
+  var getUserBadges = function() {
+    $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
+      .success(function(data) {
+        $scope.badges = data;
     });
-
+  }
 
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";

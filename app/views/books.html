@@ -4,6 +4,7 @@
     <div class="search col-xs-12 col-sm-3">
       <form class="form">
         <h2>Search for Books</h2>
+
         <!-- Search books by title, content, or description:
         <input type="text" ng-model="query" class="form-control"><br> -->
 
@@ -31,27 +32,29 @@
     </div>
 
     <div class="col-xs-12 col-sm-4" ng-hide="books.length === 0">
+
       <div class="filter" ng-hide="!results">
         <form class="form">
           <h2>Results</h2>
+
           <div class="form-group">
             <label>Filter results by title: </label>
             <input type="text" ng-model="query.title" class="form-control">
-
           </div>
+
           <div class="form-group">
             <label>Filter results by author: </label>
             <input type="text" ng-model="query.author" class="form-control">
-
           </div>
-
         </form>
+
       </div>
+
       <div class="book-list">
         <ul>
           <div class="book" ng-repeat="book in books | filter:query:strict">
             <li>
-              <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title | title:title}}</a></h3>
+              <h3><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h3>
             </li>
             <li>
               <h4>Author(s): {{book.author}}</h4>

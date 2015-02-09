@@ -1,20 +1,47 @@
 var loginControllerModule = angular.module('loginControllerModule', []);
 
-loginControllerModule.controller('loginController', ['$scope', '$http', function($scope, $http) {
-  $scope.login_user = {email: null, password: null};
-  $scope.login_error = {message: null, errors: {}};
+loginControllerModule.controller('loginController', ['$scope', '$rootScope', '$http', '$auth', "$location", function($scope, $rootScope, $http, $auth, $location) {
+  $scope.loginForm = {email: null, password: null};
 
-  $scope.login = function() {
-    $http.post('http://localhost:3000/api/users/sign_in.json', {user: {email:$scope.login_user.email, password: $scope.login_user.password}})
-      .success(function() {
-        console.log("success");
+  // $scope.login = function() {
+  //   $auth.submitLogin($scope.loginForm)
+  //     .then(function(resp) {
+  //       console.log("blargh");
+  //     })
+  // };
+
+  $scope.handleLoginBtnClick = function() {
+    $auth.submitLogin($scope.loginForm)
+      .then(function(resp) {
+
+        // handle success response
+      })
+      .catch(function(resp) {
+        // handle error response
       });
   };
 
-  $scope.logout = function() {
-    $http.delete('http://localhost:3000/api/users/sign_out')
-      .success(function() {
-        console.log("sign out success");
-      });
-  };
+  $rootScope.$on('auth:login-success', function(ev, user) {
+    $rootScope.user = user;
+    // localStorage.setItem('user_id', user.id)
+    $location.path("/dashboard")
+  })
+
+
+  $scope.handleRegBtnClick = function() {
+      $auth.submitRegistration($scope.registrationForm)
+        .then(function(resp) {
+          console.log("hey! new user!")
+          // handle success response
+        })
+        .catch(function(resp) {
+          console.log("broken :(")
+          // handle error response
+        });
+    };
+
+  $rootScope.$on('auth:registration-email-success', function(ev, user) {
+    $rootScope.user = user;
+    console.log("registered!");
+  })
 }]);

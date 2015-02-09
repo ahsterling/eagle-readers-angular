@@ -1,9 +1,37 @@
 var booksControllerModule = angular.module('booksControllerModule', []);
 
-booksControllerModule.controller('booksController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+booksControllerModule.controller('booksController', ['$scope', '$http', '$location', '$rootScope', "$auth", function($scope, $http, $location, $rootScope, $auth) {
+  $auth.validateUser().then(function(resp) {
 
+  })
+
+  // $scope.user_id = localStorage.getItem('user_id')
+
+
+
+  // $scope.user = $rootScope.user;
+
+  $rootScope.$on('auth:validation-success', function(ev, user) {
+    console.log('auth validation');
+    $http.get('http://localhost:3000/users/' + $scope.user.id)
+      .success(function(data) {
+        $scope.user = data;
+    });
+  });
+
+
+  $scope.user = $rootScope.user
   $scope.books = [];
   $scope.genres = [];
+
+  // $scope.user_id = localStorage.getItem('user_id')
+
+  // $http.get('http://localhost:3000/users/' + $scope.user.id)
+  //   .success(function(data) {
+  //     $scope.user = data;
+  //
+  //   })
+
 
   $http.get("http://localhost:3000/genres").success(function(data) {
     $scope.genres = data;
@@ -57,9 +85,8 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
 }]);
 
-booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
+booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope) {
   $scope.id = $stateParams.id;
-
   $scope.book = {};
 
   $http.get("http://localhost:3000/books/" + $stateParams.id).success(function(data) {
@@ -67,15 +94,24 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
     getBookSubjects();
   });
 
-  $scope.user = {id: 1, email: "c@c.com"}
   $scope.userBooks = [];
 
+  $scope.user = $rootScope.user;
 
-  $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+  $http.get('http://localhost:3000/users/' + $scope.user.id)
     .success(function(data) {
-      $scope.userBooks = data;
-      $scope.hasBook = $scope.userHasBook();
+      $scope.user = data;
+      getUserBooks();
     });
+
+
+  var getUserBooks = function() {
+    $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+      .success(function(data) {
+        $scope.userBooks = data;
+        $scope.hasBook = $scope.userHasBook();
+      });
+  }
 
   $scope.subjects = [];
 
