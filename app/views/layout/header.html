@@ -1,9 +1,9 @@
-<div ng-controller="navController">
+<div>
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button ng-click="isCollapsed = !isCollapsed" ng-show="showToggle" ng-hide="!showToggle" type="button">
+        <button type="button">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -12,7 +12,7 @@
         <a class="navbar-brand" ui-sref="app.dashboard">Eagle Readers</a>
       </div>
 
-      <div collapse='isCollapsed' class="nav-collapse">
+      <div class="nav-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a ui-sref="app.books">Add books</a></li>
           <li><a ui-sref="app.badges">Find Badges</a></li>
