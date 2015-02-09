@@ -24,7 +24,7 @@ loginControllerModule.controller('loginController', ['$scope', '$rootScope', '$h
   $rootScope.$on('auth:login-success', function(ev, user) {
     console.log('login success')
     $rootScope.user = user;
-    // $location.path("/dashboard");
+    $location.path("/dashboard");
   });
   $rootScope.$on('auth:login-failure', function(ev, reason) {
     console.log("failllll");

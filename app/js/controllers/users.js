@@ -1,6 +1,6 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
-usersControllerModule.controller('userController', ['$scope', '$rootScope', '$http', '$auth', function($scope, $rootScope, $http, $auth) {
+usersControllerModule.controller('userController', ['$scope', '$rootScope', '$http', '$auth', '$location', function($scope, $rootScope, $http, $auth, $location) {
   $scope.user = $rootScope.user;
   $auth.validateUser().then(function(resp) {
 
@@ -8,7 +8,19 @@ usersControllerModule.controller('userController', ['$scope', '$rootScope', '$ht
 
   // $scope.user_id = localStorage.getItem('user_id')
 
+  $scope.handleSignOutBtnClick = function() {
+      $auth.signOut()
+        .then(function(resp) {
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
 
+  $rootScope.$on('auth:logout-success', function(ev) {
+    $location.path('/');
+  });
 
   // $scope.user = $rootScope.user;
 
