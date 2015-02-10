@@ -17,21 +17,24 @@ describe('Books Controller', function() {
   //  }));
 
    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+     scope = $rootScope.$new();
+     ctrl = $controller('booksController', {$scope: scope});
+
      $httpBackend = _$httpBackend_;
      $httpBackend.when('GET', 'http://localhost:3000/books').
         respond([{title: 'The Great Gatsby'}, {title: 'Looking for Alaska'}]);
-     $httpBackend.when('GET', 'http://localhost:3000/subjects').
-        respond([{name: "Fiction"}, {name: "History"}]);
-     scope = $rootScope.$new();
-     ctrl = $controller('booksController', {$scope: scope});
+    //  $httpBackend.when('GET', 'http://localhost:3000/subjects').
+    //     respond([{name: "Fiction"}, {name: "History"}]);
+     $httpBackend.when('GET', 'http://localhost:3000/genres').
+        respond([{genre_name: 'fiction'}, {genre_name: 'history'}]);
    }));
 
 
-   it('should create "subjects" model with 2 subjects', function() {
+   it('should create "genres" model with 2 genres', function() {
 
     //  expect(scope.books).toEqualData([]);
      $httpBackend.flush();
-     expect(scope.subjects.length).toBe(2);
+     expect(scope.genres.length).toBe(2);
     //  expect(scope.books).toEqualData(
     //      [{title: 'The Great Gatsby'}, {title: 'Looking for Alaska'}]);
 
@@ -50,7 +53,8 @@ describe('Books Controller', function() {
      $stateParams.id = 1;
      user = {id: 6};
 
-     
+     $httpBackend.when('GET', 'http://localhost:3000/' + user.id).
+        respond(user);
 
      $httpBackend.when('GET', 'http://localhost:3000/books/'+ $stateParams.id).
         respond({title: 'The Great Gatsby'});
