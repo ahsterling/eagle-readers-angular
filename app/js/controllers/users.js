@@ -1,20 +1,51 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
-usersControllerModule.controller('userController', ['$scope', '$rootScope', '$http', '$auth', function($scope, $rootScope, $http, $auth) {
-  $scope.user = $rootScope.user;
-  $auth.validateUser().then(function(resp) {
-
-  })
+usersControllerModule.controller('userController', ['$state', '$scope', '$rootScope', '$http', '$auth', '$location', function($state, $scope, $rootScope, $http, $auth, $location) {
+  // $scope.user = $rootScope.user;
+  // $auth.validateUser().then(function(resp) {
+  //
+  // })
 
   // $scope.user_id = localStorage.getItem('user_id')
 
+  // $http.get('http://localhost:3000/users/' + $rootScope.user.id)
+  //   .success(function(data) {
+  //     // $scope.user = data;
+  //     getUserBooks();
+  //     getUserBadges();
+  //   })
 
+  //
+  $scope.handleSignOutBtnClick = function() {
+      $auth.signOut()
+        .then(function(resp) {
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
+
+  $rootScope.$on('auth:logout-success', function(ev) {
+    $location.path('/');
+  });
+
+  $rootScope.$on('auth:login-success', function(ev, user) {
+    $http.get('http://localhost:3000/users/' + $rootScope.user.id)
+      .success(function(data) {
+        $scope.user = data;
+        getUserBooks();
+        getUserBadges();
+    });
+
+  })
 
   // $scope.user = $rootScope.user;
 
   $rootScope.$on('auth:validation-success', function(ev, user) {
     console.log('auth validation');
-    $http.get('http://localhost:3000/users/' + $scope.user.id)
+    console.log('getting books . . . ')
+    $http.get('http://localhost:3000/users/' + $rootScope.user.id)
       .success(function(data) {
         $scope.user = data;
         getUserBooks();
