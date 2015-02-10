@@ -7,7 +7,19 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   // $scope.user_id = localStorage.getItem('user_id')
 
+  $scope.handleSignOutBtnClick = function() {
+      $auth.signOut()
+        .then(function(resp) {
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
 
+  $rootScope.$on('auth:logout-success', function(ev) {
+    $location.path('/');
+  });
 
   // $scope.user = $rootScope.user;
 
