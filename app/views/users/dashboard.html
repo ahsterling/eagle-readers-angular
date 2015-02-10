@@ -18,7 +18,20 @@
       </div>
 
       <div class="col-xs-12 col-sm-4 leaderboard">
-        <h2>Leaderboard:</h2>
+        <h2>Change Password:</h2>
+        <form class="form"ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
+          <div class="form-group">
+            <label>password</label>
+            <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control"/>
+          </div>
+
+          <div class="form-group">
+            <label>password confirmation</label>
+            <input type="password" class="form-control" name="password_confirmation" ng-model="changePasswordForm.password_confirmation" required="required"/>
+          </div>
+
+          <button type="submit" class="btn btn-default">Change your password</button>
+        </form>
       </div>
     </div>
 

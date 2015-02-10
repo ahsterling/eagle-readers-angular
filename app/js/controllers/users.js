@@ -69,4 +69,22 @@ usersControllerModule.controller('userController', ['$scope', '$rootScope', '$ht
     });
   }
 
+  $scope.handleUpdatePasswordBtnClick = function() {
+      $auth.updatePassword($scope.updatePasswordForm)
+        .then(function(resp) {
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
+
+  $rootScope.$on('auth:password-change-success', function(ev) {
+    console.log("password successfully changed");
+  });
+
+  $rootScope.$on('auth:password-change-error', function(ev) {
+    console.log('error updating password');
+  });
+
 }]);
