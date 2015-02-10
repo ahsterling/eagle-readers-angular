@@ -78,7 +78,7 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
   }
 
   $scope.bookSearch = function() {
-    var url = "http://localhost:3000/books/search?";
+    var url = "http://54.213.100.80/books/search?";
 
     var titleParams, authorParams;
 
@@ -99,5 +99,26 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
       // $scope.results = true;
     });
   }
+
+  $scope.passwordChange = false;
+
+  $scope.handleUpdatePasswordBtnClick = function() {
+      $auth.updatePassword($scope.updatePasswordForm)
+        .then(function(resp) {
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
+
+  $rootScope.$on('auth:password-change-success', function(ev) {
+    console.log("password successfully changed");
+    $scope.passwordChange = false;
+  });
+
+  $rootScope.$on('auth:password-change-error', function(ev) {
+    console.log('error updating password');
+  });
 
 }]);
