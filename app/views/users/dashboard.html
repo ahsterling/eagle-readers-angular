@@ -18,8 +18,26 @@
       </div>
 
       <div class="col-xs-12 col-sm-4 leaderboard">
-        <h2>Change Password:</h2>
-        <form class="form"ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
+        <h2>Account Info:</h2>
+        <table class="table">
+          <tr>
+            <th>
+              Username
+            </th>
+            <td>
+              {{user.uid}}
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Password
+            </th>
+            <td>
+              <span ng-click="passwordChange = !passwordChange"class="btn btn-sm btn-default">Reset Password</span>
+            </td>
+          </tr>
+        </table>
+        <form ng-if = "passwordChange" class="form"ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
           <div class="form-group">
             <label>password</label>
             <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control"/>

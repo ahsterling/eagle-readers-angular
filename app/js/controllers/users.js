@@ -100,6 +100,8 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     });
   }
 
+  $scope.passwordChange = false;
+
   $scope.handleUpdatePasswordBtnClick = function() {
       $auth.updatePassword($scope.updatePasswordForm)
         .then(function(resp) {
