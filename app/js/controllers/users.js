@@ -78,7 +78,7 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
   }
 
   $scope.bookSearch = function() {
-    var url = "http://localhost:3000/books/search?";
+    var url = "http://54.213.100.80/books/search?";
 
     var titleParams, authorParams;
 
