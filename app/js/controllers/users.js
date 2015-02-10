@@ -114,6 +114,7 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
 
   $rootScope.$on('auth:password-change-success', function(ev) {
     console.log("password successfully changed");
+    $scope.passwordChange = false;
   });
 
   $rootScope.$on('auth:password-change-error', function(ev) {
