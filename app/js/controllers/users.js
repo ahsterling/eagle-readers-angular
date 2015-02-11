@@ -2,9 +2,17 @@ var usersControllerModule = angular.module('usersControllerModule', []);
 
 usersControllerModule.controller('userController', ['$state', '$scope', '$rootScope', '$http', '$auth', '$location', function($state, $scope, $rootScope, $http, $auth, $location) {
   // $scope.user = $rootScope.user;
-  // $auth.validateUser().then(function(resp) {
-  //
-  // })
+  $auth.validateUser().then(function(resp) {
+
+  });
+
+  $http.get('http://localhost:3000/users/' + $rootScope.user.id)
+    .success(function(data) {
+      $scope.user = data;
+      getUserBooks();
+      getUserBadges();
+  });
+
 
   // $scope.user_id = localStorage.getItem('user_id')
 
