@@ -1,6 +1,15 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
-usersControllerModule.controller('userController', ['$state', '$scope', '$rootScope', '$http', '$auth', '$location', function($state, $scope, $rootScope, $http, $auth, $location) {
+usersControllerModule.controller('userController', [
+  '$state',
+  '$scope',
+  '$rootScope',
+  '$http',
+  '$auth',
+  '$location',
+  'currentUser',
+
+  function($state, $scope, $rootScope, $http, $auth, $location, currentUser) {
 
   $http.get('http://localhost:3000/users/' + $rootScope.user.id)
     .success(function(data) {
@@ -8,6 +17,8 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
       getUserBooks();
       getUserBadges();
   });
+
+  console.log("currentUser: " + currentUser.loggedIn);
 
 
   $scope.handleSignOutBtnClick = function() {
