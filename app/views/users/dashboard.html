@@ -37,7 +37,7 @@
             </td>
           </tr>
         </table>
-        <form ng-if = "passwordChange" class="form"ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
+        <form ng-if = "passwordChange" class="form" ng-submit="handleUpdatePasswordBtnClick(changePasswordForm)" role="form">
           <div class="form-group">
             <label>password</label>
             <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control"/>
@@ -48,6 +48,9 @@
             <input type="password" class="form-control" name="password_confirmation" ng-model="changePasswordForm.password_confirmation" required="required"/>
           </div>
 
+          <div ng-if="passChangeError" class="error-message">
+            {{passChangeError}}
+          </div>
           <button type="submit" class="btn btn-default">Change your password</button>
         </form>
       </div>

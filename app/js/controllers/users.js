@@ -100,14 +100,21 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
 
   $scope.passwordChange = false;
 
+  $scope.changePasswordForm = {};
+
   $scope.handleUpdatePasswordBtnClick = function() {
-      $auth.updatePassword($scope.updatePasswordForm)
+    if ($scope.changePasswordForm.password === $scope.changePasswordForm.password_confirmation) {
+      $auth.updatePassword($scope.changePasswordForm)
         .then(function(resp) {
           // handle success response
         })
         .catch(function(resp) {
           // handle error response
         });
+    } else {
+      $scope.passChangeError = "Sorry, passwords did not match";
+    }
+
     };
 
   $rootScope.$on('auth:password-change-success', function(ev) {
@@ -115,7 +122,8 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $scope.passwordChange = false;
   });
 
-  $rootScope.$on('auth:password-change-error', function(ev) {
+  $rootScope.$on('auth:password-change-error', function(ev, reason) {
+    $scope.passChangeError =
     console.log('error updating password');
   });
 
