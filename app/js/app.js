@@ -10,8 +10,8 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'filtersModule',
   'ng-token-auth',
   'ipCookie',
-  'matchMedia'
-
+  'matchMedia',
+  'ngScrollbar'
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvider) {
@@ -37,18 +37,23 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         'content@': {
           templateUrl: 'app/views/users/dashboard.html'
         }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser()
+        }
       }
-      // resolve: {
-      //   auth: function($auth) {
-      //     return $auth.validateUser()
-      //   }
-      // }
     })
     .state('app.badges', {
       url: 'badges',
       views: {
         'content@': {
           templateUrl: 'app/views/badges/badges.html'
+        }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser()
         }
       }
     })
@@ -58,7 +63,13 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         'show': {
           templateUrl: 'app/views/badges/badge_show.html'
         }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser()
+        }
       }
+
     })
     .state('app.books', {
       url: 'books',
@@ -66,7 +77,13 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         'content@': {
           templateUrl: 'app/views/books.html'
         }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
       }
+
     })
     .state('app.books.detail', {
       url: '/:id',
@@ -74,7 +91,13 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         'show': {
           templateUrl: 'app/views/books/show.html'
         }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser()
+        }
       }
+
     })
   $urlRouterProvider.otherwise('/');
 });

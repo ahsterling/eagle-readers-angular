@@ -1,16 +1,16 @@
 <div ng-controller="userController">
-  <div class="container-fluid">
-    <button class="btn btn-default" ng-click='signOut()'>Sign out</button>
+  <div class="container-fluid page-container">
 
     <div class="row">
       <div class="col-xs-12 col-sm-4 my-books">
-        <h2>Books I've Read:</h2>
-        <div ng-include="'app/views/users/my_books.html'">
-
-        </div>
+          <h2>Books I've Read:</h2>
+          <div>
+            <div ng-include="'app/views/users/my_books.html'">
+            </div>
+          </div>
       </div>
 
-      <div class="col-xs-12 col-sm-4 my badges">
+      <div class="col-xs-12 col-sm-4 my-badges">
         <h2>My badges:</h2>
 
         <div ng-include="'app/views/badges/my_badges.html'"></div>
@@ -52,6 +52,7 @@
         </form>
       </div>
     </div>
+    <button class="btn btn-default" ng-click='signOut()'>Sign out</button>
 
     <!-- <div class="row">
       <div class="col-sm-12">

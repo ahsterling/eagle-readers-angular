@@ -1,11 +1,20 @@
 var booksControllerModule = angular.module('booksControllerModule', []);
 
 booksControllerModule.controller('booksController', ['$scope', '$http', '$location', '$rootScope', "$auth", function($scope, $http, $location, $rootScope, $auth) {
-  $auth.validateUser().then(function(resp) {
 
-  })
+  $scope.books = [];
+  $scope.genres = [];
 
-  // $scope.user_id = localStorage.getItem('user_id')
+  $http.get('http://localhost:3000/users/' + $scope.user.id)
+    .success(function(data) {
+      $scope.user = data;
+  });
+
+  $http.get("http://localhost:3000/genres").success(function(data) {
+    $scope.genres = data;
+  });
+
+  $scope.results = false;
 
   $scope.handleSignOutBtnClick = function() {
       $auth.signOut()
@@ -23,18 +32,15 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   // $scope.user = $rootScope.user;
 
-  $rootScope.$on('auth:validation-success', function(ev, user) {
-    console.log('auth validation');
-    $http.get('http://localhost:3000/users/' + $scope.user.id)
-      .success(function(data) {
-        $scope.user = data;
-    });
-  });
+  // $rootScope.$on('auth:validation-success', function(ev, user) {
+  //   console.log('auth validation');
+  //   $http.get('http://localhost:3000/users/' + $scope.user.id)
+  //     .success(function(data) {
+  //       $scope.user = data;
+  //   });
+  // });
 
 
-  $scope.user = $rootScope.user
-  $scope.books = [];
-  $scope.genres = [];
 
   // $scope.user_id = localStorage.getItem('user_id')
 
@@ -45,11 +51,6 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   //   })
 
 
-  $http.get("http://localhost:3000/genres").success(function(data) {
-    $scope.genres = data;
-  });
-
-  $scope.results = false;
 
   // $scope.collapseResults = function() {
   //   $scope.booksCollapsed = true;
@@ -133,7 +134,6 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
         $scope.subjects = data;
       });
   };
-
 
 
   $scope.userHasBook = function() {
