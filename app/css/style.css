@@ -1,6 +1,42 @@
 body {
   padding-top: 70px;
+  font-family: 'Roboto Slab', serif;
+  /*background: url('/app/images/books.jpg') center center cover no-repeat fixed;*/
 }
+
+.login-page {
+  /* Location of the image */
+  background-image: url('/app/images/books.jpg');
+
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+  min-height: 645px;
+}
+
+
+
+/*html, body {
+  background: url('/app/images/books.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
 
 a:hover {
   text-decoration: none;
@@ -18,7 +54,7 @@ a:hover {
 .login {
   margin-top: 20px;
   padding: 5px 20px 20px 20px;
-  background-color: rgba(223, 223, 223, 0.78);
+  background-color: rgba(223, 223, 223, 0.95);
 }
 
 
@@ -31,15 +67,21 @@ a:hover {
   list-style: none;
   display: inline-block;
   background-color: #0FADCB;
+  min-height: 80px;
+  padding: 0;
+  border: none;
 }
+
 
 .navbar-default .navbar-brand {
   color: white;
-  font-size: 30px;
+  font-size: 40px;
+  line-height: 10px;
 }
 
 .navbar-default .navbar-nav>li>a {
   color: white;
+  margin-top: 20px;
 }
 /*.navigation li {
   display: inline-block;
@@ -65,6 +107,10 @@ a:hover {
 
 .glyphicon {
   padding: 5px;
+}
+
+.my-books, .my-badges, .leaderboard {
+  background-color: white;
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
