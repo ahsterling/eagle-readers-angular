@@ -30,6 +30,11 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
     $location.path('/');
   });
 
+  $rootScope.$on('auth:logout-error', function(ev, reason) {
+    $scope.logoutError = "Sorry, something went wrong.  Please try again."
+    console.log('logout error');
+  });
+
   // $scope.user = $rootScope.user;
 
   // $rootScope.$on('auth:validation-success', function(ev, user) {

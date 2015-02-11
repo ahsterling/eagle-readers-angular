@@ -2,7 +2,8 @@
 <div ng-controller="booksController" class="container-fluid page-container">
   <div class="row">
 
-    <button class="btn btn-default" ng-click='signOut()'>Sign out</button>
+    <button class="btn btn-default" ng-click='handleSignOutBtnClick()'>Sign out</button>
+    <div ng-if='logoutError'>{{logoutError}}</div>
     <div class="search col-xs-12 col-sm-3">
       <form class="form">
         <h2>Search for Books</h2>

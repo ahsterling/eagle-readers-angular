@@ -24,6 +24,10 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $location.path('/');
   });
 
+  $rootScope.$on('auth:logout-error', function(ev, reason) {
+    $scope.logoutError = "Sorry, something went wrong.  Please try again."
+  });
+
   // $rootScope.$on('auth:login-success', function(ev, user) {
   //   $http.get('http://localhost:3000/users/' + $rootScope.user.id)
   //     .success(function(data) {

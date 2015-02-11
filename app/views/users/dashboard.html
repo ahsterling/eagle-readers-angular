@@ -52,7 +52,8 @@
         </form>
       </div>
     </div>
-    <button class="btn btn-default" ng-click='signOut()'>Sign out</button>
+    <button class="btn btn-default" ng-click='handleSignOutBtnClick()'>Sign out</button>
+    <div ng-if='logoutError'>{{logoutError}}</div>
 
     <!-- <div class="row">
       <div class="col-sm-12">
