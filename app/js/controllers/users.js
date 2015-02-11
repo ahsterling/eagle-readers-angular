@@ -1,10 +1,6 @@
 var usersControllerModule = angular.module('usersControllerModule', []);
 
 usersControllerModule.controller('userController', ['$state', '$scope', '$rootScope', '$http', '$auth', '$location', function($state, $scope, $rootScope, $http, $auth, $location) {
-  // $scope.user = $rootScope.user;
-  $auth.validateUser().then(function(resp) {
-
-  });
 
   $http.get('http://localhost:3000/users/' + $rootScope.user.id)
     .success(function(data) {
@@ -14,16 +10,6 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
   });
 
 
-  // $scope.user_id = localStorage.getItem('user_id')
-
-  // $http.get('http://localhost:3000/users/' + $rootScope.user.id)
-  //   .success(function(data) {
-  //     // $scope.user = data;
-  //     getUserBooks();
-  //     getUserBadges();
-  //   })
-
-  //
   $scope.handleSignOutBtnClick = function() {
       $auth.signOut()
         .then(function(resp) {
@@ -38,28 +24,28 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $location.path('/');
   });
 
-  $rootScope.$on('auth:login-success', function(ev, user) {
-    $http.get('http://localhost:3000/users/' + $rootScope.user.id)
-      .success(function(data) {
-        $scope.user = data;
-        getUserBooks();
-        getUserBadges();
-    });
-
-  })
+  // $rootScope.$on('auth:login-success', function(ev, user) {
+  //   $http.get('http://localhost:3000/users/' + $rootScope.user.id)
+  //     .success(function(data) {
+  //       $scope.user = data;
+  //       getUserBooks();
+  //       getUserBadges();
+  //   });
+  //
+  // })
 
   // $scope.user = $rootScope.user;
 
-  $rootScope.$on('auth:validation-success', function(ev, user) {
-    console.log('auth validation');
-    console.log('getting books . . . ')
-    $http.get('http://localhost:3000/users/' + $rootScope.user.id)
-      .success(function(data) {
-        $scope.user = data;
-        getUserBooks();
-        getUserBadges();
-    });
-  });
+  // $rootScope.$on('auth:validation-success', function(ev, user) {
+  //   console.log('auth validation');
+  //   console.log('getting books . . . ')
+  //   $http.get('http://localhost:3000/users/' + $rootScope.user.id)
+  //     .success(function(data) {
+  //       $scope.user = data;
+  //       getUserBooks();
+  //       getUserBadges();
+  //   });
+  // });
 
   $rootScope.$on('auth:validation-error', function(ev) {
     console.log('errrrooorr');
