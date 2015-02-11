@@ -15,10 +15,11 @@
       </div>
 
       <div class="nav-collapse">
-        <ul class="nav navbar-nav navbar-right">
+        <ul ng-if="loggedIn" class="nav navbar-nav navbar-right">
           <li><a ui-sref="app.books">Add books</a></li>
           <li><a ui-sref="app.badges">Find Badges</a></li>
           <li><a ui-sref='app.dashboard'>My Dashboard</a></li>
+          <li><button class='btn btn-default' ng-click="handleSignOutBtnClick()">Sign Out</button></li>
         </ul>
       </div>
 

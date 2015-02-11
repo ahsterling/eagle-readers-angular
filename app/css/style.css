@@ -83,6 +83,10 @@ a:hover {
   color: white;
   margin-top: 20px;
 }
+
+.navbar-default .navbar-nav>li>button {
+  margin-top: 20px;
+}
 /*.navigation li {
   display: inline-block;
 }*/

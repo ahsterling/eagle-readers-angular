@@ -16,57 +16,6 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.results = false;
 
-  $scope.handleSignOutBtnClick = function() {
-      $auth.signOut()
-        .then(function(resp) {
-          // handle success response
-        })
-        .catch(function(resp) {
-          // handle error response
-        });
-    };
-
-  $rootScope.$on('auth:logout-success', function(ev) {
-    $location.path('/');
-  });
-
-  $rootScope.$on('auth:logout-error', function(ev, reason) {
-    $scope.logoutError = "Sorry, something went wrong.  Please try again."
-    console.log('logout error');
-  });
-
-  // $scope.user = $rootScope.user;
-
-  // $rootScope.$on('auth:validation-success', function(ev, user) {
-  //   console.log('auth validation');
-  //   $http.get('http://localhost:3000/users/' + $scope.user.id)
-  //     .success(function(data) {
-  //       $scope.user = data;
-  //   });
-  // });
-
-
-
-  // $scope.user_id = localStorage.getItem('user_id')
-
-  // $http.get('http://localhost:3000/users/' + $scope.user.id)
-  //   .success(function(data) {
-  //     $scope.user = data;
-  //
-  //   })
-
-
-
-  // $scope.collapseResults = function() {
-  //   $scope.booksCollapsed = true;
-  // }
-  //
-  //
-  // $scope.newSearch = function() {
-  //   $scope.results = false;
-  //   $scope.books = [];
-  // }
-
   $scope.bookSearch = function() {
     var url = "http://localhost:3000/books/search?";
 
@@ -107,7 +56,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 }]);
 
 booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope) {
-  $scope.id = $stateParams.id;
+
   $scope.book = {};
 
   $http.get("http://localhost:3000/books/" + $stateParams.id).success(function(data) {
@@ -125,14 +74,13 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
       getUserBooks();
     });
 
-
   var getUserBooks = function() {
     $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
       .success(function(data) {
         $scope.userBooks = data;
         $scope.hasBook = $scope.userHasBook();
       });
-  }
+  };
 
   $scope.subjects = [];
 
@@ -142,7 +90,6 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
         $scope.subjects = data;
       });
   };
-
 
   $scope.userHasBook = function() {
     var userHasBook = false;
@@ -163,6 +110,5 @@ booksControllerModule.controller('bookController', ['$scope', '$http', '$statePa
         $scope.hasBook = true;
       });
   };
-
 
 }]);

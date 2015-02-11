@@ -3,14 +3,13 @@
 
     <div class="row">
       <div class="col-xs-12 col-sm-4 my-books">
-          <h2>Books I've Read:</h2>
-          <div ng-show="noBooks">
-            You haven't added any books yet!
-          </div>
-          <div>
-            <div ng-include="'app/views/users/my_books.html'">
-            </div>
-          </div>
+        <h2>Books I've Read:</h2>
+        <div ng-show="noBooks">
+          You haven't added any books yet!
+        </div>
+        <div>
+          <div ng-include="'app/views/users/my_books.html'"></div>
+        </div>
       </div>
 
       <div class="col-xs-12 col-sm-4 my-badges">
@@ -19,24 +18,17 @@
           You haven't earned any badges yet!
         </div>
         <div ng-include="'app/views/badges/my_badges.html'"></div>
-
       </div>
 
       <div class="col-xs-12 col-sm-4 leaderboard">
         <h2>Account Info:</h2>
         <table class="table">
           <tr>
-            <th>
-              Username
-            </th>
-            <td>
-              {{user.uid}}
-            </td>
+            <th>Username</th>
+            <td>{{user.uid}}</td>
           </tr>
           <tr>
-            <th>
-              Password
-            </th>
+            <th>Password</th>
             <td>
               <span ng-click="passwordChange = !passwordChange"class="btn btn-sm btn-default">Reset Password</span>
             </td>
@@ -60,26 +52,6 @@
         </form>
       </div>
     </div>
-    <button class="btn btn-default" ng-click='handleSignOutBtnClick()'>Sign out</button>
-    <div ng-if='logoutError'>{{logoutError}}</div>
-
-    <!-- <div class="row">
-      <div class="col-sm-12">
-        <form ng-submit="bookSearch()" class="form-inline">
-          <div class="form-group">
-            <label>Add a book:</label>
-            Search by title:
-            <input ng-model="query.title" class="form-control">
-            Search by author:
-            <input ng-model="query.author" class="form-control">
-            <input type="submit"></button>
-            {{query}}
-          </div>
-
-        </form>
-
-      </div>
-    </div> -->
 
   </div>
 </div>
