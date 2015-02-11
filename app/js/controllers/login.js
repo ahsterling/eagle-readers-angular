@@ -27,25 +27,35 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
     $state.go('app.dashboard', {}, {reload: true})
     // $location.path("/dashboard");
   });
-  $rootScope.$on('auth:login-failure', function(ev, reason) {
-    console.log("failllll");
+  $rootScope.$on('auth:login-error', function(ev, reason) {
+    $scope.loginError = reason.errors[0];
   });
 
 
+
   $scope.handleRegBtnClick = function() {
+    if ($scope.registrationForm.password === $scope.registrationForm.password_confirmation) {
       $auth.submitRegistration($scope.registrationForm)
-        .then(function(resp) {
-          console.log("hey! new user!")
+      .then(function(resp) {
           // handle success response
-        })
-        .catch(function(resp) {
-          console.log("broken :(")
-          // handle error response
-        });
+      })
+      .catch(function(resp) {
+      });
+    } else {
+      $scope.regError = "passwords do not match"
     };
+
+  }
 
   $rootScope.$on('auth:registration-email-success', function(ev, user) {
     $rootScope.user = user;
     console.log("registered!");
-  })
+  });
+
+  $rootScope.$on('auth:registration-email-error', function(ev, reason) {
+    console.log(reason);
+    if (reason.errors.email[0] = "This email address is already in use") {
+      $scope.regError = "This username is already in use"
+    }
+  });
 }]);
