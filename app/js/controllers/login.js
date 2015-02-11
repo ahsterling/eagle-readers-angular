@@ -34,15 +34,27 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
 
 
   $scope.handleRegBtnClick = function() {
+    console.log("hit the method")
     if ($scope.registrationForm.password === $scope.registrationForm.password_confirmation) {
+      console.log("if block was true")
+      console.log($scope.registrationForm)
+      console.log($scope.registrationForm.password)
+      console.log($scope.registrationForm.password_confirmation)
+
       $auth.submitRegistration($scope.registrationForm)
       .then(function(resp) {
+          console.log('got a success from the API call')
+          console.log(resp)
           // handle success response
       })
       .catch(function(resp) {
+          console.log('got a failure from the API call')
+          console.log(resp)
       });
     } else {
-      $scope.regError = "passwords do not match"
+      $scope.regError = "Passwords do not match"
+      console.log('hit the else block')
+       console.log($scope.regError)
     };
 
   }
