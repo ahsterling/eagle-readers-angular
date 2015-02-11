@@ -88,10 +88,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
     }
 
     $http.get(url).success(function(data) {
-
       $scope.books = data;
-      console.log($scope.books)
-      console.log($scope.books.length)
       if ($scope.books.length === 0) {
         $scope.noResults = true;
       }

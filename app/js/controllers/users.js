@@ -65,6 +65,9 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
       .success(function(data) {
         $scope.books = data;
+        if ( $scope.books.length === 0 ) {
+          $scope.noBooks = true;
+        }
       });
   }
 
@@ -72,6 +75,9 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
       .success(function(data) {
         $scope.badges = data;
+        if ( $scope.badges.length === 0 ) {
+          $scope.noBadges = true;
+        }
     });
   }
 
