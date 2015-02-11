@@ -33,7 +33,9 @@
       </form>
 
     </div>
-
+    <div ng-show='noResults' class="error-message col-xs-12 col-sm-4">
+      Sorry, no results found.  Try searching again!
+    </div>
     <div class="col-xs-12 col-sm-4" ng-hide="books.length === 0">
 
       <div class="filter" ng-hide="!results">
