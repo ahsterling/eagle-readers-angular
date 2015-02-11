@@ -30,6 +30,11 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
     $location.path('/');
   });
 
+  $rootScope.$on('auth:logout-error', function(ev, reason) {
+    $scope.logoutError = "Sorry, something went wrong.  Please try again."
+    console.log('logout error');
+  });
+
   // $scope.user = $rootScope.user;
 
   // $rootScope.$on('auth:validation-success', function(ev, user) {
@@ -84,6 +89,9 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
     $http.get(url).success(function(data) {
       $scope.books = data;
+      if ($scope.books.length === 0) {
+        $scope.noResults = true;
+      }
       $scope.results = true;
     });
 

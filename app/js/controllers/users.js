@@ -24,6 +24,10 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $location.path('/');
   });
 
+  $rootScope.$on('auth:logout-error', function(ev, reason) {
+    $scope.logoutError = "Sorry, something went wrong.  Please try again."
+  });
+
   // $rootScope.$on('auth:login-success', function(ev, user) {
   //   $http.get('http://localhost:3000/users/' + $rootScope.user.id)
   //     .success(function(data) {
@@ -61,6 +65,9 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
       .success(function(data) {
         $scope.books = data;
+        if ( $scope.books.length === 0 ) {
+          $scope.noBooks = true;
+        }
       });
   }
 
@@ -68,6 +75,9 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
       .success(function(data) {
         $scope.badges = data;
+        if ( $scope.badges.length === 0 ) {
+          $scope.noBadges = true;
+        }
     });
   }
 
@@ -96,14 +106,21 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
 
   $scope.passwordChange = false;
 
+  $scope.changePasswordForm = {};
+
   $scope.handleUpdatePasswordBtnClick = function() {
-      $auth.updatePassword($scope.updatePasswordForm)
+    if ($scope.changePasswordForm.password === $scope.changePasswordForm.password_confirmation) {
+      $auth.updatePassword($scope.changePasswordForm)
         .then(function(resp) {
           // handle success response
         })
         .catch(function(resp) {
           // handle error response
         });
+    } else {
+      $scope.passChangeError = "Sorry, passwords did not match";
+    }
+
     };
 
   $rootScope.$on('auth:password-change-success', function(ev) {
@@ -111,7 +128,8 @@ usersControllerModule.controller('userController', ['$state', '$scope', '$rootSc
     $scope.passwordChange = false;
   });
 
-  $rootScope.$on('auth:password-change-error', function(ev) {
+  $rootScope.$on('auth:password-change-error', function(ev, reason) {
+    $scope.passChangeError =
     console.log('error updating password');
   });
 

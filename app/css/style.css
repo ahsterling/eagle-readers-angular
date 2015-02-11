@@ -120,4 +120,9 @@ a:hover {
 .scrollme {
   max-height: 200px;
 }
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

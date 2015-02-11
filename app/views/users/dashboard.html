@@ -4,6 +4,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4 my-books">
           <h2>Books I've Read:</h2>
+          <div ng-show="noBooks">
+            You haven't added any books yet!
+          </div>
           <div>
             <div ng-include="'app/views/users/my_books.html'">
             </div>
@@ -12,7 +15,9 @@
 
       <div class="col-xs-12 col-sm-4 my-badges">
         <h2>My badges:</h2>
-
+        <div ng-show="noBadges">
+          You haven't earned any badges yet!
+        </div>
         <div ng-include="'app/views/badges/my_badges.html'"></div>
 
       </div>
@@ -37,7 +42,7 @@
             </td>
           </tr>
         </table>
-        <form ng-if = "passwordChange" class="form"ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
+        <form ng-if = "passwordChange" class="form" ng-submit="handleUpdatePasswordBtnClick(changePasswordForm)" role="form">
           <div class="form-group">
             <label>password</label>
             <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control"/>
@@ -48,11 +53,15 @@
             <input type="password" class="form-control" name="password_confirmation" ng-model="changePasswordForm.password_confirmation" required="required"/>
           </div>
 
+          <div ng-if="passChangeError" class="error-message">
+            {{passChangeError}}
+          </div>
           <button type="submit" class="btn btn-default">Change your password</button>
         </form>
       </div>
     </div>
-    <button class="btn btn-default" ng-click='signOut()'>Sign out</button>
+    <button class="btn btn-default" ng-click='handleSignOutBtnClick()'>Sign out</button>
+    <div ng-if='logoutError'>{{logoutError}}</div>
 
     <!-- <div class="row">
       <div class="col-sm-12">
