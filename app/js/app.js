@@ -10,8 +10,7 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'filtersModule',
   'ng-token-auth',
   'ipCookie',
-  'matchMedia',
-  'ngScrollbar'
+  'matchMedia'
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvider) {
