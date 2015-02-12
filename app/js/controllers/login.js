@@ -4,7 +4,7 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
   $scope.loginForm = {email: null, password: null};
 
   $scope.usernames = [];
-  $http.get('http://54.213.100.80//users/usernames')
+  $http.get('http://54.213.100.80/users/usernames')
     .success(function(data) {
       $scope.usernames = data;
     })
