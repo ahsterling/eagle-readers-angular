@@ -10,7 +10,6 @@ indexControllerModule.controller('indexController', [
 
   function($scope, $rootScope, $http, $auth, $state) {
 
-
     $scope.handleSignOutBtnClick = function() {
       $auth.signOut().then(function() {
 

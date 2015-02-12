@@ -3,12 +3,11 @@ var loginControllerModule = angular.module('loginControllerModule', []);
 loginControllerModule.controller('loginController', ['$scope', '$state', '$rootScope', '$http', '$auth', "$location", function($scope, $state, $rootScope, $http, $auth, $location) {
   $scope.loginForm = {email: null, password: null};
 
-  // $scope.login = function() {
-  //   $auth.submitLogin($scope.loginForm)
-  //     .then(function(resp) {
-  //       console.log("blargh");
-  //     })
-  // };
+  $scope.usernames = [];
+  $http.get('http://localhost:3000/users/usernames')
+    .success(function(data) {
+      $scope.usernames = data;
+    })
 
   $scope.handleLoginBtnClick = function() {
     $auth.submitLogin($scope.loginForm)
@@ -37,13 +36,16 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
     if ($scope.registrationForm.password === $scope.registrationForm.password_confirmation) {
 
       $auth.submitRegistration($scope.registrationForm)
-      .then(function(resp) {
-          console.log(resp)
-          // handle success response
+        .then(function() {
+          $auth.submitLogin({
+            email: $scope.registrationForm.email,
+            password: $scope.registrationForm.password
+          });
       })
       .catch(function(resp) {
-          console.log(resp)
+
       });
+
     } else {
       $scope.regError = "Passwords do not match"
     };
@@ -52,7 +54,9 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
 
   $rootScope.$on('auth:registration-email-success', function(ev, user) {
     $rootScope.user = user;
+
     console.log("registered!");
+    // $state.go('app.dashboard', {}, {reload: true});
   });
 
   $rootScope.$on('auth:registration-email-error', function(ev, reason) {
