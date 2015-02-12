@@ -9,7 +9,7 @@ describe('badgesController',function() {
 
  beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
    $httpBackend = _$httpBackend_;
-   $httpBackend.when('GET', 'http://localhost:3000/genre_badges').
+   $httpBackend.when('GET', 'http://54.213.100.80/genre_badges').
       respond([{genre_name: 'Mystery'}, {genre_name: 'Fiction'}]);
    scope = $rootScope.$new();
    ctrl = $controller('badgesController', {$scope: scope});
@@ -36,7 +36,7 @@ describe('badgeController', function() {
  beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, $stateParams) {
    $stateParams.id = 1;
    $httpBackend = _$httpBackend_;
-   $httpBackend.when('GET', 'http://localhost:3000/genre_badges/' + $stateParams.id).
+   $httpBackend.when('GET', 'http://54.213.100.80/genre_badges/' + $stateParams.id).
       respond({genre_name: 'Mystery'});
    scope = $rootScope.$new();
    ctrl = $controller('badgeController', {$scope: scope});

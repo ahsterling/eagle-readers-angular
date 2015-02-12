@@ -15,9 +15,9 @@ describe('userController', function() {
  beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, $stateParams) {
    $httpBackend = _$httpBackend_;
    $stateParams.id = 1;
-   $httpBackend.when('GET', 'http://localhost:3000/users/' + $stateParams.id + "/books").
+   $httpBackend.when('GET', 'http://54.213.100.80/users/' + $stateParams.id + "/books").
       respond([{title: 'The Great Gatsby'}, {title: 'Looking for Alaska'}]);
-    $httpBackend.when('GET', 'http://localhost:3000/users/' + $stateParams.id + "/badges").
+    $httpBackend.when('GET', 'http://54.213.100.80/users/' + $stateParams.id + "/badges").
       respond([{genre_name: "Mystery"}])
    scope = $rootScope.$new();
    ctrl = $controller('userController', {$scope: scope});
