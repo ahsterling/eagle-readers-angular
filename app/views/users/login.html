@@ -29,7 +29,14 @@
             <h2>Register</h2>
             <hr>
             <div class="form-group">
-              <input name="email" ng-model="registrationForm.email" required="required" class="form-control" placeholder="username"/>
+              <select class="form-control" ng-model="registrationForm.email">
+                <option value="" disabled selected>Your Eckstein Username</option>
+                <option value="{{username}}" ng-repeat="username in usernames">
+                  {{username}}
+                </option>
+              </select>
+
+              <!-- <input name="email" ng-model="registrationForm.email" required="required" class="form-control" placeholder="username"/> -->
             </div>
 
             <div class="form-group">
