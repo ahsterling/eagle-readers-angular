@@ -21,11 +21,11 @@ describe('Books Controller', function() {
      ctrl = $controller('booksController', {$scope: scope});
 
      $httpBackend = _$httpBackend_;
-     $httpBackend.when('GET', 'http://localhost:3000/books').
+     $httpBackend.when('GET', 'http://54.213.100.80/books').
         respond([{title: 'The Great Gatsby'}, {title: 'Looking for Alaska'}]);
     //  $httpBackend.when('GET', 'http://localhost:3000/subjects').
     //     respond([{name: "Fiction"}, {name: "History"}]);
-     $httpBackend.when('GET', 'http://localhost:3000/genres').
+     $httpBackend.when('GET', 'http://54.213.100.80/genres').
         respond([{genre_name: 'fiction'}, {genre_name: 'history'}]);
    }));
 
@@ -53,16 +53,16 @@ describe('Books Controller', function() {
      $stateParams.id = 1;
      user = {id: 6};
 
-     $httpBackend.when('GET', 'http://localhost:3000/' + user.id).
+     $httpBackend.when('GET', 'http://54.213.100.80/users/' + user.id).
         respond(user);
 
-     $httpBackend.when('GET', 'http://localhost:3000/books/'+ $stateParams.id).
+     $httpBackend.when('GET', 'http://54.213.100.80/books/'+ $stateParams.id).
         respond({title: 'The Great Gatsby'});
 
-     $httpBackend.when('GET', 'http://localhost:3000/books/' + $stateParams.id + '/subjects').
+     $httpBackend.when('GET', 'http://54.213.100.80/books/' + $stateParams.id + '/subjects').
         respond({name: "Fiction"});
 
-     $httpBackend.when('GET', 'http://localhost:3000/users/' + user.id + '/books').
+     $httpBackend.when('GET', 'http://54.213.100.80/users/' + user.id + '/books').
         respond([{title: "The Great Gatsby"}, {title: "The Fault in Our Stars"}]);
 
      scope = $rootScope.$new();
