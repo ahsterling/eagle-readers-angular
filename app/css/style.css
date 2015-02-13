@@ -93,6 +93,14 @@ a:hover {
   border: none;
 }
 
+.navbar-header .brand {
+  display: inline-block;
+  color: white;
+  font-size: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
 
 .navbar-default .navbar-brand {
   color: white;
@@ -157,4 +165,37 @@ a:hover {
   color: red;
   margin-bottom: 10px;
 }
+
+#mobile-navbar {
+  visibility: hidden;
+}
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+@media (max-width: 768px) {
+  #desktop-navbar {
+    display: none;
+  }
+
+  #mobile-navbar {
+    visibility: visible;
+  }
+
+  .collapse-button {
+    float: right;
+    margin-right: 10px;
+    margin-top: 30px;
+  }
+
+  .menu {
+    margin-left: 10px;
+  }
+
+  .sign-out {
+    margin-left: 15px;
+  }
+
+  .menu hr {
+    margin: 0;
+  }
+
+}

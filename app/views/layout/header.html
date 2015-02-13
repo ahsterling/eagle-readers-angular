@@ -1,7 +1,7 @@
 <div ng-controller='indexController'>
 
 
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav id="desktop-navbar"class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
 
       <div class="navbar-header">
@@ -14,7 +14,7 @@
         <h1><a class="navbar-brand" ui-sref="app.dashboard">Eagle Readers</a></h1>
       </div>
 
-      <div class="nav-collapse">
+      <div class="">
         <ul ng-if="loggedIn" class="nav navbar-nav navbar-right">
           <li><a ui-sref="app.books">Add books</a></li>
           <li><a ui-sref="app.badges">Find Badges</a></li>
@@ -27,4 +27,39 @@
     </div>
   </nav>
 
+  <div id="mobile-navbar">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="brand" ui-sref="app.dashboard">Eagle Readers</a>
+          <div ng-if="loggedIn" class="collapse-button">
+            <button type="button"ng-click="isCollapsed = !isCollapsed">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+              <!-- <div class="glyphicon glyphicon-minus"></div><br>
+              <div class="glyphicon glyphicon-minus"></div><br> -->
+            </button>
+
+          </div>
+          <div collapse="isCollapsed">
+            <div>
+              <ul ng-if="loggedIn" class="nav navbar-nav menu">
+                <hr>
+                <li><a ui-sref="app.books">Add books</a></li>
+                <hr>
+                <li><a ui-sref="app.badges">Find Badges</a></li>
+                <hr>
+                <li><a ui-sref='app.dashboard'>My Dashboard</a></li>
+                <hr>
+                <li><button class='btn btn-default sign-out' ng-click="handleSignOutBtnClick()">Sign Out</button></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+
+  </div>
 </div>
