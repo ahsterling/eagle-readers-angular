@@ -57,6 +57,27 @@ a:hover {
   background-color: rgba(223, 223, 223, 0.95);
 }
 
+.book {
+  margin: 5px;
+  padding: 5px;
+  height: 200px;
+  width: 131px;
+  overflow: scroll;
+  display: inline-block;
+  /*background: */
+  background-image: url('/app/images/book-cover-04.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d1cccd;
+}
+
+.book a {
+  color: #d1cccd;
+  font-size: 16px;
+}
+
+.book p {
+}
 
 .book-list ul {
   list-style: none;
@@ -82,10 +103,12 @@ a:hover {
 .navbar-default .navbar-nav>li>a {
   color: white;
   margin-top: 20px;
+
 }
 
 .navbar-default .navbar-nav>li>button {
   margin-top: 20px;
+  margin-right: 20px;
 }
 /*.navigation li {
   display: inline-block;
@@ -103,6 +126,11 @@ a:hover {
 
 .form-control {
   border-radius: 0;
+}
+
+.form-inline {
+  /*margin-left: 75px;*/
+  /*width: 90%;*/
 }
 
 .btn {

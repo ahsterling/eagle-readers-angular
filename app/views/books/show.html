@@ -1,6 +1,7 @@
 <div ng-controller="bookController">
   <div class="container-fluid">
 
+    
     <h2>{{book.title}} <button class="btn btn-primary" ng-if="!hasBook" ng-click="addBook()">Add it!</button></h2>
     <p ng-if="hasBook">Already in your collection!</p>
     <h3>Written by: {{book.author}}</h3>
@@ -18,6 +19,6 @@
     <p>
       {{book.genre}}
     </p>
+    <hr>
   </div>
-
 </div>
