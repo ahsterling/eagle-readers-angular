@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="brand" ui-sref="app.dashboard">Eagle Readers</a>
-          <div class="collapse-button">
+          <div ng-if="loggedIn" class="collapse-button">
             <button type="button"ng-click="isCollapsed = !isCollapsed">
               <span class="sr-only">Toggle navigation</span>
               <span class="glyphicon glyphicon-chevron-down"></span>
