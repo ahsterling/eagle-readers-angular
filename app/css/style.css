@@ -173,7 +173,7 @@ a:hover {
 
 @media (max-width: 768px) {
   #desktop-navbar {
-    display: none;
+    visibility: hidden;
   }
 
   #mobile-navbar {
