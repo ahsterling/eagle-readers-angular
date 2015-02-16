@@ -122,13 +122,14 @@ booksControllerModule.controller('bookController', [
               templateUrl: 'app/views/badges/badge_notice.html',
               controller: 'badgeModalController'
             });
-            $scope.hasBook = true;
 
             $scope.modalInstance.closeModal = function() {
               $scope.modalInstance.close();
             };
 
         };
+        $scope.hasBook = true;
+
     });
   };
 
