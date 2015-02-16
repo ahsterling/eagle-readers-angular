@@ -5,12 +5,12 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   $scope.books = [];
   $scope.genres = [];
 
-  $http.get('http://54.213.100.80/users/' + $scope.user.id)
+  $http.get('http://localhost:3000/users/' + $scope.user.id)
     .success(function(data) {
       $scope.user = data;
   });
 
-  $http.get("http://54.213.100.80/genres").success(function(data) {
+  $http.get("http://localhost:3000/genres").success(function(data) {
     console.log("genres!");
     $scope.genres = data;
   });
@@ -19,7 +19,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.bookSearch = function() {
 
-    var url = "http://54.213.100.80/books/search?";
+    var url = "http://localhost:3000/books/search?";
 
     var titleParams, authorParams, genreParams;
 
@@ -58,60 +58,92 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
 }]);
 
-booksControllerModule.controller('bookController', ['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope) {
+booksControllerModule.controller('bookController', [
+  '$scope',
+  '$http',
+  '$stateParams',
+  '$rootScope',
+  'flashService',
+  '$modal',
 
-  $scope.book = {};
+  function($scope, $http, $stateParams, $rootScope, flashService, $modal) {
 
-  $http.get("http://54.213.100.80/books/" + $stateParams.id).success(function(data) {
-    $scope.book = data;
-    getBookSubjects();
-  });
+    $scope.book = {};
 
-  $scope.userBooks = [];
-
-  $scope.user = $rootScope.user;
-
-  $http.get('http://54.213.100.80/users/' + $scope.user.id)
-    .success(function(data) {
-      $scope.user = data;
-      getUserBooks();
+    $http.get("http://localhost:3000/books/" + $stateParams.id).success(function(data) {
+      $scope.book = data;
+      getBookSubjects();
     });
 
-  var getUserBooks = function() {
-    $http.get('http://54.213.100.80/users/' + $scope.user.id + '/books')
+    $scope.userBooks = [];
+
+    $scope.user = $rootScope.user;
+
+    $http.get('http://localhost:3000/users/' + $scope.user.id)
       .success(function(data) {
-        $scope.userBooks = data;
-        $scope.hasBook = $scope.userHasBook();
+        $scope.user = data;
+        getUserBooks();
       });
-  };
 
-  $scope.subjects = [];
-
-  getBookSubjects = function() {
-    $http.get('http://54.213.100.80/books/' + $scope.book.id + '/subjects')
-      .success(function(data) {
-        $scope.subjects = data;
-      });
-  };
-
-  $scope.userHasBook = function() {
-    var userHasBook = false;
-    for (var i = 0; i < $scope.userBooks.length; i++) {
-      if ( $scope.userBooks[i].id === $scope.book.id ) {
-        userHasBook = true;
-      }
+    var getUserBooks = function() {
+      $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+        .success(function(data) {
+          $scope.userBooks = data;
+          $scope.hasBook = $scope.userHasBook();
+        });
     };
-    return userHasBook;
-  };
 
-  $scope.addBook = function() {
-    console.log($scope.book.id);
-    console.log($scope.user.id);
-    $http.post("http://54.213.100.80/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
-      .success(function(status) {
-        console.log("woo");
-        $scope.hasBook = true;
-      });
+    $scope.subjects = [];
+
+    getBookSubjects = function() {
+      $http.get('http://localhost:3000/books/' + $scope.book.id + '/subjects')
+        .success(function(data) {
+          $scope.subjects = data;
+        });
+    };
+
+    $scope.userHasBook = function() {
+      var userHasBook = false;
+      for (var i = 0; i < $scope.userBooks.length; i++) {
+        if ( $scope.userBooks[i].id === $scope.book.id ) {
+          userHasBook = true;
+        }
+      };
+      return userHasBook;
+    };
+
+    $scope.addBook = function() {
+
+      $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
+        .success(function(data) {
+          if (data.badges.count != 0) {
+            flashService.show(data.badges[0]);
+            $scope.modalInstance = $modal.open({
+              templateUrl: 'app/views/badges/badge_notice.html',
+              controller: 'badgeModalController'
+            });
+
+          $scope.hasBook = true;
+          
+          $scope.modalInstance.closeModal = function() {
+            $scope.modalInstance.close();
+          }
+
+      };
+    });
   };
 
 }]);
+
+booksControllerModule.controller('badgeModalController', [
+  '$scope',
+  '$rootScope',
+  '$modalInstance',
+
+  function($scope, $rootScope, $modalInstance) {
+
+    $scope.closeModal = function() {
+      $modalInstance.close();
+    };
+
+  }])
