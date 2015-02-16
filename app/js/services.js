@@ -17,3 +17,16 @@ servicesModule.factory('currentUser', ['$auth', '$rootScope', function($auth, $r
   return currentUser;
 
 }]);
+
+servicesModule.factory('flashService', ['$rootScope', function($rootScope) {
+  return {
+    show: function (message) {
+      $rootScope.flash = message;
+      return message;
+    },
+    clear: function () {
+      $rootScope.flash = '';
+      return null;
+        }
+    }
+}]);

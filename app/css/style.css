@@ -64,8 +64,9 @@ a:hover {
   width: 131px;
   overflow: scroll;
   display: inline-block;
+  background-color: #6e1eaf;
   /*background: */
-  background-image: url('/app/images/book-cover-04.jpg');
+  /*background-image: url('/app/images/book-cover-04.jpg');*/
   background-repeat: no-repeat;
   background-size: cover;
   color: #d1cccd;
@@ -98,7 +99,6 @@ a:hover {
   color: white;
   font-size: 40px;
   margin-left: 10px;
-  margin-top: 10px;
 }
 
 
@@ -168,6 +168,13 @@ a:hover {
 
 #mobile-navbar {
   visibility: hidden;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  float:left;
 }
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 

@@ -1,24 +1,35 @@
 <div ng-controller="bookController">
   <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="book">
+          <h2>{{book.title}}</h2>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <button class="btn btn-primary" ng-if="!hasBook" ng-click="addBook()">Add it!</button></h2>
+        <p ng-if="hasBook">Already in your collection!</p>
+        <h3>Written by: {{book.author}}</h3>
+        <p>{{book.description}}</p>
+        <h4>published: {{book.pub_date | date:'yyyy'}}</h4>
+        <h4>pages: {{book.pages}}</h4>
+      </div>
+      <div class="col-sm-5">
 
-    
-    <h2>{{book.title}} <button class="btn btn-primary" ng-if="!hasBook" ng-click="addBook()">Add it!</button></h2>
-    <p ng-if="hasBook">Already in your collection!</p>
-    <h3>Written by: {{book.author}}</h3>
-    <p>{{book.description}}</p>
-    <h4>published: {{book.pub_date | date:'yyyy'}}</h4>
-    <h4>pages: {{book.pages}}</h4>
+        <h3>Subjects:</h3>
+        <span ng-repeat="subject in book.subject_array">
+          <p>
+            {{subject}}
+          </p>
+        </span>
+        <h3>Genre</h3>
+        <p>
+          {{book.genre}}
+        </p>
 
-    <h3>Subjects:</h3>
-    <span ng-repeat="subject in book.subject_array">
-      <p>
-        {{subject}}
-      </p>
-    </span>
-    <h3>Genre</h3>
-    <p>
-      {{book.genre}}
-    </p>
+      </div>
+    </div>
+
     <hr>
   </div>
 </div>
