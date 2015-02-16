@@ -116,20 +116,22 @@ booksControllerModule.controller('bookController', [
 
       $http.post("http://localhost:3000/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
         .success(function(data) {
+          console.log(data);
           if (data.badges.count != 0) {
             flashService.show(data.badges[0]);
             $scope.modalInstance = $modal.open({
               templateUrl: 'app/views/badges/badge_notice.html',
               controller: 'badgeModalController'
             });
+            console.log($scope.modalInstance)
+            $scope.hasBook = true;
 
-          $scope.hasBook = true;
-          
-          $scope.modalInstance.closeModal = function() {
-            $scope.modalInstance.close();
-          }
+            $scope.modalInstance.closeModal = function() {
+              console.log('modal is closing')
+              $scope.modalInstance.close();
+            };
 
-      };
+        };
     });
   };
 
