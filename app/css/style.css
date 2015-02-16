@@ -64,8 +64,9 @@ a:hover {
   width: 131px;
   overflow: scroll;
   display: inline-block;
+  background-color: #6e1eaf;
   /*background: */
-  background-image: url('/app/images/book-cover-04.jpg');
+  /*background-image: url('/app/images/book-cover-04.jpg');*/
   background-repeat: no-repeat;
   background-size: cover;
   color: #d1cccd;

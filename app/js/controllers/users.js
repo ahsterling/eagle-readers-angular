@@ -11,7 +11,7 @@ usersControllerModule.controller('userController', [
 
   function($state, $scope, $rootScope, $http, $auth, $location, currentUser) {
 
-  $http.get('http://localhost:3000/users/' + $rootScope.user.id)
+  $http.get('http://54.213.100.80/users/' + $rootScope.user.id)
     .success(function(data) {
       $scope.user = data;
       getUserBooks();
@@ -27,7 +27,7 @@ usersControllerModule.controller('userController', [
   })
 
   var getUserBooks = function() {
-    $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
+    $http.get("http://54.213.100.80/users/" + $scope.user.id + "/books")
       .success(function(data) {
         $scope.books = data;
         if ( $scope.books.length === 0 ) {
@@ -37,7 +37,7 @@ usersControllerModule.controller('userController', [
   }
 
   var getUserBadges = function() {
-    $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
+    $http.get("http://54.213.100.80/users/" + $scope.user.id + "/badges")
       .success(function(data) {
         $scope.badges = data;
         if ( $scope.badges.length === 0 ) {
@@ -47,7 +47,7 @@ usersControllerModule.controller('userController', [
   }
 
   $scope.bookSearch = function() {
-    var url = "http://localhost:3000/books/search?";
+    var url = "http://54.213.100.80/books/search?";
 
     var titleParams, authorParams;
 

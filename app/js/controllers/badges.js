@@ -2,7 +2,7 @@ var badgesControllerModule = angular.module('badgesControllerModule', []);
 
 badgesControllerModule.controller('badgesController', ['$scope', '$http', function($scope, $http) {
 
-  $http.get('http://localhost:3000/genre_badges')
+  $http.get('http://54.213.100.80/genre_badges')
     .success(function(data) {
       $scope.badges = data;
     });
@@ -22,7 +22,7 @@ badgesControllerModule.controller('badgesController', ['$scope', '$http', functi
 
 badgesControllerModule.controller('badgeController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
 
-  $http.get('http://localhost:3000/genre_badges/' + $stateParams.id)
+  $http.get('http://54.213.100.80/genre_badges/' + $stateParams.id)
     .success(function(data) {
       $scope.badge = data;
     });
