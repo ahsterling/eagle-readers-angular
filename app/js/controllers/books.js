@@ -46,14 +46,16 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
       }
       $scope.results = true;
     });
-
+    $scope.book = {};
+    $scope.search = {};
+    $location.path('/books');
   };
 
   $scope.resetSearch = function() {
     $scope.results = false;
     $scope.books = [];
     $scope.search = undefined;
-    // $location.path('/books');
+    $location.path('/books');
   }
 
 }]);
