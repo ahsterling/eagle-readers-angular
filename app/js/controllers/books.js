@@ -88,7 +88,7 @@ booksControllerModule.controller('bookController', [
       });
 
     var getUserBooks = function() {
-      $http.get('http://54.213.100.80' + $scope.user.id + '/books')
+      $http.get('http://54.213.100.80/users/' + $scope.user.id + '/books')
         .success(function(data) {
           $scope.userBooks = data;
           $scope.hasBook = $scope.userHasBook();
@@ -118,12 +118,16 @@ booksControllerModule.controller('bookController', [
 
       $http.post("http://54.213.100.80/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
         .success(function(data) {
+          console.log(data);
+
           if (data.badges.length !== 0) {
-            flashService.show(data.badges[0]);
+            // flashService.show(data.badges[0]);
             $scope.modalInstance = $modal.open({
               templateUrl: 'app/views/badges/badge_notice.html',
               controller: 'badgeModalController'
             });
+
+            $scope.badges = data.badges;
 
             $scope.modalInstance.closeModal = function() {
               $scope.modalInstance.close();
