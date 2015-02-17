@@ -38,7 +38,16 @@ body {
   background-size: cover;
 }*/
 
+a {
+  color: black;
+}
+
 a:hover {
+  text-decoration: none;
+  color:black;
+}
+
+a:visited {
   text-decoration: none;
 }
 
@@ -72,6 +81,18 @@ a:hover {
   color: #d1cccd;
 }
 
+.badge-show-page {
+  display: inline-block;
+}
+
+.badge-with-title {
+  display: inline-block;
+  height: 180px;
+  width: 125px;
+  margin: 5px;
+  vertical-align: top;
+}
+
 .badge-display {
   height: 110px;
   width: 110px;
@@ -80,6 +101,7 @@ a:hover {
   background-color: #897dcd;
   display: inline-block;
 }
+
 .book a {
   color: #d1cccd;
   font-size: 16px;
