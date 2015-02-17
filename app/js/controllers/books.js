@@ -19,6 +19,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.bookSearch = function() {
     $scope.noResults = false;
+    $scope.loadingResults = true;
     $scope.searchTitle = $scope.search.title;
     $scope.searchAuthor = $scope.search.author;
     $scope.searchGenre = $scope.search.genre;
@@ -43,6 +44,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
     $http.get(url).success(function(data) {
       console.log("books!");
+      $scope.loadingResults = false;
       $scope.books = data;
       if ($scope.books.length === 0) {
         $scope.noResults = true;
