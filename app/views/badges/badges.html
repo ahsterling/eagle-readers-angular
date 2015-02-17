@@ -1,30 +1,26 @@
 <div ng-controller="badgesController">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3">
-        <!-- <form class="form-inline">
-          Search Badges: <input type="text" ng-model="query" class="form-control">
-        </form> -->
-      </div>
-      <div class="col-sm-4">
-        <div ng-repeat="badge in badges | filter:query">
-          <h3><a ui-sref=".detail({id: badge.id})" >{{badge.title}}</a></h3>
+  <div class="container-fluid page-container">
+    <!-- <div class="row"> -->
 
-          <img src="{{badge.image}}" alt="" />
-          <!-- <p>{{badge.description}}</p> -->
+
+        <!-- <div ui-view="show">
+
+        </div> -->
+
+
+        <div ng-repeat="badge in badges | filter:query" class="badge-with-title" popover="description" popover-title="{{badge.title}}">
+          <!-- <a ui-sref=".detail({id: badge.id})"> -->
+          <!-- <a ui-sref=".detail({id: badge.id})" >{{badge.title}}</a> -->
+            <div class="badge-display">
+              <img src="{{badge.image.preview.url}}" alt="" />
+            </div>
+            <div>{{badge.title}}</div>
+          <!-- </a> -->
         </div>
-
-      </div>
-
-      <div class="col-sm-5">
-        <div ui-view="show">
-
-        </div>
-      </div>
 
 
     </div>
 
-  </div>
+  <!-- </div> -->
 
 </div>
