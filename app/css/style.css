@@ -72,6 +72,14 @@ a:hover {
   color: #d1cccd;
 }
 
+.badge-display {
+  height: 110px;
+  width: 110px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #897dcd;
+  display: inline-block;
+}
 .book a {
   color: #d1cccd;
   font-size: 16px;
