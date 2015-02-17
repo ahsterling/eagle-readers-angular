@@ -21,6 +21,7 @@
         <div class="form-group">
           <label>Search by genre:</label>
           <select ng-model="search.genre" class="form-control">
+            <option value="">All Genres</option>
             <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
           </select>
         </div>
@@ -40,6 +41,14 @@
 
       <div class="row">
         <div class="col-xs-2">
+          <div class="search-terms" ng-hide="!results">
+            <h4>Results for:</h4>
+            <div ng-show="searchTitle">Title: '{{searchTitle}}'</div>
+            <div ng-show="searchAuthor">Author: '{{searchAuthor}}'</div>
+            <div ng-show="searchGenre">Genre: '{{searchGenre}}'</div>
+            <hr>
+          </div>
+
           <div class="filter" ng-hide="!results">
             <form class="form">
               <div class="form-group">
@@ -57,7 +66,6 @@
         </div>
 
         <div class="col-xs-10">
-
 
           <div ng-show='noResults' class="error-message col-xs-12">
             Sorry, no results found.  Try searching again!

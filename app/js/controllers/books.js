@@ -18,7 +18,10 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   $scope.results = false;
 
   $scope.bookSearch = function() {
-
+    $scope.noResults = false;
+    $scope.searchTitle = $scope.search.title;
+    $scope.searchAuthor = $scope.search.author;
+    $scope.searchGenre = $scope.search.genre;
     var url = "http://54.213.100.80/books/search?";
 
     var titleParams, authorParams, genreParams;
@@ -53,6 +56,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.resetSearch = function() {
     $scope.results = false;
+    $scope.noResults = false;
     $scope.books = [];
     $scope.search = undefined;
     $location.path('/books');
