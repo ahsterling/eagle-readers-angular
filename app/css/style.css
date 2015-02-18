@@ -4,6 +4,10 @@ body {
   /*background: url('/app/images/books.jpg') center center cover no-repeat fixed;*/
 }
 
+select {
+  border-radius: 0;
+}
+
 .login-page {
   /* Location of the image */
   background-image: url('/app/images/books.jpg');

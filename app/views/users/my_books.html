@@ -1,7 +1,39 @@
 <div ng-controller="userController">
   <div>
+    <div class="form-group">
+      <button ng-click="filterBooks = !filterBooks" class="btn btn-default btn-sm btn-block">Filter My Books</button>
+    </div>
+    <form class="form-horizontal" ng-show="filterBooks">
+      <div class="form-group">
+        <label class="col-xs-2">Genre:</label>
+        <div class="col-xs-10">
+          <select ng-model="query.genre_id" class="form-control input-sm">
+            <option value=''>All Genres</option>
+            <option value='{{genre.id}}'ng-repeat="genre in userGenres">
+              {{genre.name}}
+            </option>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-2">Title: </label>
+        <div class="col-xs-10">
+          <input ng-model="query.title" name="name" value="" class="input-sm form-control" placeholder="title">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-2">Author: </label>
+        <div class="col-xs-10">
+          <input ng-model="query.author" name="name" value="" class="input-sm form-control" placeholder="author">
+        </div>
+      </div>
+
+    </form>
     <table>
-      <tr ng-repeat="book in books">
+      <tr ng-repeat="book in books | filter:query:strict">
         <td>
           <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
         </td>
@@ -10,11 +42,5 @@
         </td>
       </tr>
     </table>
-    <!-- <h4>
-      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>  {{book.title | title:title}}
-    </h4> -->
-    <!-- <p ui-sref="app.books.detail({id:book.id})">
-      {{book.title}}
-    </p> -->
   </div>
 </div>
