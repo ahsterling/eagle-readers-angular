@@ -10,7 +10,9 @@ usersControllerModule.controller('userController', [
   'currentUser',
 
   function($state, $scope, $rootScope, $http, $auth, $location, currentUser) {
-
+    $scope.query = {};
+    $scope.filterBooks = false;
+    $scope.userGenres = [];
     $scope.loadingBooks = true;
     $scope.loadingBadges = true;
 
@@ -20,6 +22,11 @@ usersControllerModule.controller('userController', [
         getUserBooks();
         getUserBadges();
     });
+
+    $http.get('http://54.213.100.80/users/' + $rootScope.user.id + '/books/genres')
+      .success(function(data) {
+        $scope.userGenres = data;
+      });
 
     $rootScope.$on('auth:validation-error', function(ev) {
       console.log('errrrooorr');

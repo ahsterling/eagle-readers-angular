@@ -2,71 +2,83 @@
   <div class="container-fluid page-container">
 
     <div class="row">
-      <div class="col-xs-12 col-sm-4 my-books">
-        <h2>Books I've Read:</h2>
-        <hr>
-        <div ng-show="loadingBooks">
-          <p>
-            Loading Books . . .
-          </p>
+      <div class="col-xs-12 col-sm-4">
+        <div class="my-books">
+          <h2>Books I've Read:</h2>
+          <hr>
 
-          <img src="app/images/loading.gif" alt="" />
-        </div>
-        <div ng-show="noBooks">
-          You haven't added any books yet!
-        </div>
-        <div class="my-book-list">
-          <div ng-include="'app/views/users/my_books.html'"></div>
+          <div ng-show="loadingBooks">
+            <p>Loading Books . . .</p>
+            <img src="app/images/loading.gif" alt="" />
+          </div>
+
+          <div ng-show="!loadingBooks">
+            <div ng-show="noBooks">
+              You haven't added any books yet!
+            </div>
+            <div class="my-book-list">
+              <div ng-include="'app/views/users/my_books.html'"></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="col-xs-12 col-sm-4 my-badges">
-        <h2>My badges:</h2>
-        <hr>
-        <div ng-show="loadingBadges">
-          <p>
-            Loading Badges . . .
-          </p>
-          <img src="app/images/loading.gif" alt="" />
+      <div class="col-xs-12 col-sm-4">
+        <div class="my-badges">
+
+          <h2>My badges:</h2>
+          <hr>
+
+          <div ng-show="loadingBadges">
+            <p>Loading Badges . . .</p>
+            <img src="app/images/loading.gif" alt="" />
+          </div>
+
+          <div ng-show="!loadingBadges">
+            <div ng-show="noBadges">
+              You haven't earned any badges yet!
+            </div>
+            <div ng-include="'app/views/badges/my_badges.html'"></div>
+          </div>
 
         </div>
-        <div ng-show="noBadges">
-          You haven't earned any badges yet!
-        </div>
-        <div ng-include="'app/views/badges/my_badges.html'"></div>
       </div>
 
-      <div class="col-xs-12 col-sm-4 leaderboard">
-        <h2>Account Info:</h2>
-        <hr>
-        <table class="table">
-          <tr>
-            <th>Username</th>
-            <td>{{user.uid}}</td>
-          </tr>
-          <tr>
-            <th>Password</th>
-            <td>
-              <span ng-click="passwordChange = !passwordChange"class="btn btn-sm btn-default">Reset Password</span>
-            </td>
-          </tr>
-        </table>
-        <form ng-if = "passwordChange" class="form" ng-submit="handleUpdatePasswordBtnClick(changePasswordForm)" role="form">
-          <div class="form-group">
-            <label>password</label>
-            <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control"/>
-          </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="account-info">
 
-          <div class="form-group">
-            <label>password confirmation</label>
-            <input type="password" class="form-control" name="password_confirmation" ng-model="changePasswordForm.password_confirmation" required="required"/>
-          </div>
+          <h2>Account Info:</h2>
+          <hr>
+          <table class="table">
+            <tr>
+              <th>Username</th>
+              <td>{{user.uid}}</td>
+            </tr>
+            <tr>
+              <th>Password</th>
+              <td>
+                <span ng-click="passwordChange = !passwordChange"class="btn btn-sm btn-default">Reset Password</span>
+              </td>
+            </tr>
+          </table>
+          <form ng-if = "passwordChange" class="form" ng-submit="handleUpdatePasswordBtnClick(changePasswordForm)" role="form">
+            <div class="form-group">
+              <label>password</label>
+              <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control"/>
+            </div>
 
-          <div ng-if="passChangeError" class="error-message">
-            {{passChangeError}}
-          </div>
-          <button type="submit" class="btn btn-default">Change your password</button>
-        </form>
+            <div class="form-group">
+              <label>password confirmation</label>
+              <input type="password" class="form-control" name="password_confirmation" ng-model="changePasswordForm.password_confirmation" required="required"/>
+            </div>
+
+            <div ng-if="passChangeError" class="error-message">
+              {{passChangeError}}
+            </div>
+            <button type="submit" class="btn btn-default">Change your password</button>
+          </form>
+        </div>
       </div>
     </div>
 
