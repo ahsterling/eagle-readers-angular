@@ -8,6 +8,11 @@ select {
   border-radius: 0;
 }
 
+h2 {
+  font-size: 25px;
+  margin-top: 5px;
+}
+
 .login-page {
   /* Location of the image */
   background-image: url('/app/images/books.jpg');
@@ -139,7 +144,7 @@ a:visited {
   list-style: none;
   display: inline-block;
   background-color: #0FADCB;
-  min-height: 80px;
+  min-height: 70px;
   padding: 0;
   border: none;
 }
@@ -147,8 +152,9 @@ a:visited {
 .navbar-header .brand {
   display: inline-block;
   color: white;
-  font-size: 40px;
-  margin-left: 10px;
+  font-size: 35px;
+  /*margin-left: 10px;*/
+  margin-top: 10px;
 }
 
 
@@ -160,12 +166,12 @@ a:visited {
 
 .navbar-default .navbar-nav>li>a {
   color: white;
-  margin-top: 20px;
+  margin-top: 16px;
 
 }
 
 .navbar-default .navbar-nav>li>button {
-  margin-top: 20px;
+  margin-top: 16px;
   margin-right: 20px;
 }
 /*.navigation li {
@@ -204,7 +210,7 @@ a:visited {
 }
 
 .page-container {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .scrollme {
@@ -214,6 +220,10 @@ a:visited {
 .error-message {
   color: red;
   margin-bottom: 10px;
+}
+
+.filter-label {
+  margin-top: 5px;
 }
 
 #mobile-navbar {

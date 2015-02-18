@@ -5,38 +5,40 @@
       <div class="col-xs-12 col-sm-4 my-books">
         <h2>Books I've Read:</h2>
         <hr>
-        <div ng-show="loadingBooks">
-          <p>
-            Loading Books . . .
-          </p>
 
+        <div ng-show="loadingBooks">
+          <p>Loading Books . . .</p>
           <img src="app/images/loading.gif" alt="" />
         </div>
-        <div ng-show="noBooks">
-          You haven't added any books yet!
-        </div>
-        <div class="my-book-list">
-          <div ng-include="'app/views/users/my_books.html'"></div>
+
+        <div ng-show="!loadingBooks">
+          <div ng-show="noBooks">
+            You haven't added any books yet!
+          </div>
+          <div class="my-book-list">
+            <div ng-include="'app/views/users/my_books.html'"></div>
+          </div>
         </div>
       </div>
 
-      <div class="col-xs-12 col-sm-5 my-badges">
+      <div class="col-xs-12 col-sm-4 my-badges">
         <h2>My badges:</h2>
         <hr>
-        <div ng-show="loadingBadges">
-          <p>
-            Loading Badges . . .
-          </p>
-          <img src="app/images/loading.gif" alt="" />
 
+        <div ng-show="loadingBadges">
+          <p>Loading Badges . . .</p>
+          <img src="app/images/loading.gif" alt="" />
         </div>
-        <div ng-show="noBadges">
-          You haven't earned any badges yet!
+        
+        <div ng-show="!loadingBadges">
+          <div ng-show="noBadges">
+            You haven't earned any badges yet!
+          </div>
+          <div ng-include="'app/views/badges/my_badges.html'"></div>
         </div>
-        <div ng-include="'app/views/badges/my_badges.html'"></div>
       </div>
 
-      <div class="col-xs-12 col-sm-3 leaderboard">
+      <div class="col-xs-12 col-sm-4 leaderboard">
         <h2>Account Info:</h2>
         <hr>
         <table class="table">
