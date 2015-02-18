@@ -75,7 +75,6 @@ booksControllerModule.controller('bookController', [
   '$modal',
 
   function($scope, $http, $stateParams, $rootScope, flashService, $modal) {
-
     $scope.book = {};
 
     $http.get("http://54.213.100.80/books/" + $stateParams.id).success(function(data) {

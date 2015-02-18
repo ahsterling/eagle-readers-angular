@@ -1,18 +1,26 @@
 <div ng-controller="bookController">
   <div class="container-fluid">
     <div class="row">
+      <!-- <div ng-show="loadingBook">
+        <p>Loading book . . .</p>
+        <img src="app/images/loading.gif" alt="" />
+      </div> -->
       <div class="col-sm-2">
         <div class="book">
-          <h2>{{book.title}}</h2>
+          <h3>{{book.title}}</h3>
         </div>
+        <button class="btn btn-primary" ng-if="!hasBook" ng-click="addBook()">Add it!</button>
+        <p ng-if="hasBook">Already in your collection!</p>
+
       </div>
       <div class="col-sm-5">
-        <button class="btn btn-primary" ng-if="!hasBook" ng-click="addBook()">Add it!</button></h2>
-        <p ng-if="hasBook">Already in your collection!</p>
-        <h3>Written by: {{book.author}}</h3>
-        <p>{{book.description}}</p>
-        <h4>published: {{book.pub_date | date:'yyyy'}}</h4>
-        <h4>pages: {{book.pages}}</h4>
+        <div class="book-details">
+          <h2>{{book.title}}</h2>
+          <h3>Written by: {{book.author}}</h3>
+          <p>{{book.description}}</p>
+          <h4>published: {{book.pub_date | date:'yyyy'}}</h4>
+          <h4>pages: {{book.pages}}</h4>
+        </div>
       </div>
       <div class="col-sm-5">
 

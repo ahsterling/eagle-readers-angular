@@ -3,10 +3,6 @@
   <div class="row">
     <div class="search col-xs-12">
       <form class="form-inline">
-        <!-- <h2>Search for Books</h2> -->
-
-        <!-- Search books by title, content, or description:
-        <input type="text" ng-model="query" class="form-control"><br> -->
 
         <div class="form-group" >
           <label>Search books by title:</label>
@@ -61,45 +57,32 @@
                 <input type="text" ng-model="query.author" class="form-control">
               </div>
             </form>
-
           </div>
+
         </div>
 
         <div class="col-xs-10">
+
           <div ng-show="loadingResults">
-            <p>
-              Loading Search Results . . .
-            </p>
+            <p>Loading Search Results . . .</p>
             <img src="app/images/loading.gif" alt="" />
           </div>
-
 
           <div ng-show='noResults' class="error-message col-xs-12">
             Sorry, no results found.  Try searching again!
           </div>
+
           <div ng-hide="books.length === 0">
             <div class="book-list">
-
               <span class="book" ng-repeat="book in books | filter:query:strict">
                 <a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a>
-
-                <p>
-                  Author: {{book.author}}
-                </p>
+                <p>Author: {{book.author}}</p>
               </span>
-              <!-- <ul>
-                <div class="book" ng-repeat="book in books | filter:query:strict">
-                  <li>
-                    <h4><a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a></h4>
-                  </li>
-                  <li>
-                    <h4>Author(s): {{book.author}}</h4>
-                  </li>
-                </div>
-              </ul> -->
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
   </div>

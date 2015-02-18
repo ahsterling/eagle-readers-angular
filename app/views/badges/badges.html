@@ -1,22 +1,22 @@
 <div ng-controller="badgesController">
   <div class="container-fluid page-container">
-    <!-- <div class="row"> -->
+    <div ng-show="loadingBadges">
+      <p>Loading Badges . . .</p>
+      <img src="app/images/loading.gif" alt="" />
+    </div>
 
-
-        <!-- <div ui-view="show">
-
-        </div> -->
-
-
-        <div ng-repeat="badge in badges | filter:query" class="badge-with-title" popover-placement="right" popover="description" popover-title="{{badge.title}}">
-          <!-- <a ui-sref=".detail({id: badge.id})"> -->
-          <!-- <a ui-sref=".detail({id: badge.id})" >{{badge.title}}</a> -->
-            <div class="badge-display">
-              <img src="{{badge.image.preview.url}}" alt="" />
-            </div>
-            <div>{{badge.title}}</div>
-          <!-- </a> -->
-        </div>
+      <p>
+        Click a badge to see its descrption.
+      </p>
+      <div ng-repeat="badge in badges | filter:query" class="badge-with-title" popover-placement="right" popover="{{badge.description}}" popover-title="{{badge.title}}">
+        <!-- <a ui-sref=".detail({id: badge.id})"> -->
+        <!-- <a ui-sref=".detail({id: badge.id})" >{{badge.title}}</a> -->
+          <div class="badge-display">
+            <img src="{{badge.image.preview.url}}" alt="" />
+          </div>
+          <div>{{badge.title}}</div>
+        <!-- </a> -->
+      </div>
 
 
     </div>

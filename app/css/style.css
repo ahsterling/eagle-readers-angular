@@ -87,17 +87,18 @@ a:visited {
 
 .badge-with-title {
   display: inline-block;
-  height: 180px;
-  width: 125px;
+  height: 160px;
+  width: 110px;
   margin: 5px;
   vertical-align: top;
+  text-align:center;
 }
 
 .badge-display {
   height: 110px;
   width: 110px;
   padding: 5px;
-  margin: 5px;
+  /*margin: 5px;*/
   background-color: #897dcd;
   display: inline-block;
 }
@@ -113,6 +114,17 @@ a:visited {
 .book-list ul {
   list-style: none;
   padding-left: 0;
+}
+
+.book-details h2 {
+  margin-top: 0;
+}
+
+.my-book-list {
+  /*max-height: 200px;
+  overflow:scroll;
+  border:solid gray 1px;
+  border-radius: 5px;*/
 }
 
 .navbar {
