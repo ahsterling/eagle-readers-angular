@@ -18,6 +18,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
   $scope.results = false;
 
   $scope.bookSearch = function() {
+    $scope.books = [];
     $scope.noResults = false;
     $scope.loadingResults = true;
     $scope.searchTitle = $scope.search.title;
@@ -121,20 +122,25 @@ booksControllerModule.controller('bookController', [
 
     $scope.addBook = function() {
 
-      $http.post("http://54.213.100.80/users/"+$scope.user.id+"/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
+      $http.post("http://54.213.100.80/users/" + $scope.user.id + "/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
         .success(function(data) {
           console.log(data);
+          $scope.badges = data.badges;
 
           if (data.badges.length !== 0) {
             // flashService.show(data.badges[0]);
-            $scope.modalInstance = $modal.open({
+            $modal.open({
               templateUrl: 'app/views/badges/badge_notice.html',
-              controller: 'badgeModalController'
+              controller: 'badgeModalController',
+              resolve: {
+                badges: function() {
+                  return $scope.badges;
+                }
+              }
             });
 
-            $scope.badges = data.badges;
 
-            $scope.modalInstance.closeModal = function() {
+            $scope.closeModal = function() {
               $scope.modalInstance.close();
             };
 
@@ -148,10 +154,12 @@ booksControllerModule.controller('bookController', [
 
 booksControllerModule.controller('badgeModalController', [
   '$scope',
-  '$rootScope',
   '$modalInstance',
+  'badges',
 
-  function($scope, $rootScope, $modalInstance) {
+  function($scope, $modalInstance, badges) {
+
+    $scope.badges = badges;
 
     $scope.closeModal = function() {
       $modalInstance.close();
