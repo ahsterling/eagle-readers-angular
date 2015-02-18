@@ -61,8 +61,9 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
 
   $rootScope.$on('auth:registration-email-error', function(ev, reason) {
     console.log(reason);
-    // if (reason.errors.email[0] = "This email address is already in use") {
-    //   $scope.regError = "This username is already in use"
-    // }
+
+    if (reason.errors.email[0] = "This email address is already in use") {
+      $scope.regError = "This username is already in use"
+    }
   });
 }]);
