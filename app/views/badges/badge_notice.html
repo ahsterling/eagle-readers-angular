@@ -4,13 +4,17 @@
 </div>
 
 <div class="modal-body">
+
   <div ng-repeat="badge in badges">
     <span class="badge-display">
       <img src="{{badge.image.preview.url}}" alt="" />
     </span>
-    <p>
-      Congrats, you earned the {{badge.title}} badge!
-    </p>
+    <span class="badge-text">
+      Congrats, you earned the <strong>{{badge.title}}</strong> badge!
+    </span>
+
+
+  </div>
   </div>
 </div>
 

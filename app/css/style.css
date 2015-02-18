@@ -103,6 +103,9 @@ a:visited {
   display: inline-block;
 }
 
+.badge-text {
+  margin-left: 10px;
+}
 
 .book a {
   color: #d1cccd;
