@@ -10,7 +10,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
       $scope.user = data;
   });
 
-  $http.get("http://54.213.100.80/genres").success(function(data) {
+  $http.get("http://54.213.100.80/genres", {cache: true}).success(function(data) {
     console.log("genres!");
     $scope.genres = data;
   });
@@ -43,7 +43,7 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
       url = url + "&genre=" + genreParams;
     }
 
-    $http.get(url).success(function(data) {
+    $http.get(url, {cache: true}).success(function(data) {
       console.log("books!");
       $scope.loadingResults = false;
       $scope.books = data;
