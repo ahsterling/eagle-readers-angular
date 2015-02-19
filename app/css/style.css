@@ -296,6 +296,10 @@ a:visited {
     visibility: visible;
   }
 
+  .navbar-header .brand {
+    margin-left: 10px
+  }
+
   .collapse-button {
     float: right;
     margin-right: 10px;

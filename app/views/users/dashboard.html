@@ -18,7 +18,7 @@
               <div ng-show="noBooks">
                 You haven't added any books yet!
               </div>
-              <div class="my-book-list">
+              <div ng-hide="noBooks" class="my-book-list">
                 <div ng-include="'app/views/users/my_books.html'"></div>
               </div>
             </div>
