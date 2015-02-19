@@ -9,6 +9,7 @@ badgesControllerModule.controller('badgesController', [
   function($scope, $http, $modal, $position) {
 
     $scope.loadingBadges = true;
+    $scope.badges = [];
 
     $http.get('http://54.213.100.80/genre_badges')
       .success(function(data) {

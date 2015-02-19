@@ -102,13 +102,22 @@ a:visited {
   width: 131px;
   overflow: scroll;
   display: inline-block;
-  background-color: #6e1eaf;
+  background-color: #03658C;
   /*background: */
   /*background-image: url('/app/images/book-cover-04.jpg');*/
   background-repeat: no-repeat;
   background-size: cover;
-  color: #d1cccd;
+  color: #D2D7D9;
 }
+
+.book a {
+  color: white;
+  font-size: 16px;
+}
+
+.book p {
+}
+
 
 .badge-show-page {
   display: inline-block;
@@ -136,13 +145,6 @@ a:visited {
   margin-left: 10px;
 }
 
-.book a {
-  color: #d1cccd;
-  font-size: 16px;
-}
-
-.book p {
-}
 
 .book-list ul {
   list-style: none;
@@ -216,6 +218,14 @@ a:visited {
 
 }
 
+.navbar-default .navbar-nav>li>a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a:visited {
+  color: white;
+}
+
 .navbar-default .navbar-nav>li>button {
   margin-top: 16px;
   margin-right: 20px;
@@ -251,7 +261,7 @@ a:visited {
   padding: 5px;
 }
 
-.my-books, .my-badges, .account-info {
+.my-books, .my-badges, .account-info, .badges {
   background-color: white;
   padding: 10px;
   min-height: 300px;
