@@ -78,7 +78,7 @@ booksControllerModule.controller('bookController', [
   function($scope, $http, $stateParams, $rootScope, flashService, $modal) {
     $scope.book = {};
 
-    $http.get("http://54.213.100.80/books/" + $stateParams.id).success(function(data) {
+    $http.get("http://54.213.100.80/books/" + $stateParams.id, {cache: true}).success(function(data) {
       $scope.book = data;
       getBookSubjects();
     });
@@ -104,7 +104,7 @@ booksControllerModule.controller('bookController', [
     $scope.subjects = [];
 
     getBookSubjects = function() {
-      $http.get('http://54.213.100.80/books/' + $scope.book.id + '/subjects')
+      $http.get('http://54.213.100.80/books/' + $scope.book.id + '/subjects', {cache: true})
         .success(function(data) {
           $scope.subjects = data;
         });
