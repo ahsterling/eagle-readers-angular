@@ -1,7 +1,8 @@
 
-<div ng-controller="booksController" class="container-fluid page-container">
-  <div class="row">
-    <div class="search col-xs-12">
+<div ng-controller="booksController" class="container-fluid">
+  <div class="search row">
+    <div class="col-xs-12">
+
       <form class="form-inline">
 
         <div class="form-group" >
@@ -25,11 +26,13 @@
         <button class='btn btn-default' id="submit-search" ng-click ="bookSearch()">Search</button>
 
       </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 page-container">
 
     </div>
-    <hr>
   </div>
-  <hr>
   <div class="row">
     <div class="col-xs-12" ui-view="show"></div>
   </div>

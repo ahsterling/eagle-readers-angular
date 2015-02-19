@@ -5,37 +5,63 @@
         <p>Loading book . . .</p>
         <img src="app/images/loading.gif" alt="" />
       </div> -->
-      <div class="col-sm-2">
-        <div class="book">
+      <!-- <div class="col-sm-2"> -->
+        <!-- <div class="book">
           <h3>{{book.title}}</h3>
+        </div> -->
+
+      <!-- </div> -->
+      <!-- <div class="col-sm-2">
+        <div class="book">
+
         </div>
-        <button class="btn btn-primary" ng-if="!hasBook" ng-click="addBook()">Add it!</button>
-        <p ng-if="hasBook">Already in your collection!</p>
+      </div> -->
+      <div class="col-sm-12 book-display">
+        <h2>{{book.title}}</h2>
+
+        <div class="row book-details">
+            <div class="col-sm-7">
+              <p>{{book.description}}</p>
+              <hr>
+              <p><span class="glyphicon glyphicon-pencil"></span>Written by: {{book.author}}
+                <span class="glyphicon glyphicon-time"></span>
+                published: {{book.pub_date | date:'yyyy'}}
+                <span class="glyphicon glyphicon-book"></span>
+                {{book.pages}} pages
+                <button ng-click="addBook()" ng-if="!hasBook" class="add-book-btn btn btn-primary">Add Book</button>
+                <span class="in-collection" ng-if="hasBook">In collection!</span>
+              </p>
+
+
+            </div>
+
+            <div class="col-sm-5">
+
+              <p>
+                <span class="glyphicon glyphicon-star"></span>
+                <strong>Genre:</strong> {{book.genre}}
+              </p>
+              <p>
+                <span class="glyphicon glyphicon-star"></span>
+                <strong>Subjects: </strong>
+                <span ng-repeat="subject in subjects">{{subject.name}}, </span>
+              </p>
+
+
+          </div>
+        </div>
 
       </div>
-      <div class="col-sm-5">
-        <div class="book-details">
-          <h2>{{book.title}}</h2>
-          <h3>Written by: {{book.author}}</h3>
-          <p>{{book.description}}</p>
-          <h4>published: {{book.pub_date | date:'yyyy'}}</h4>
-          <h4>pages: {{book.pages}}</h4>
-        </div>
-      </div>
-      <div class="col-sm-5">
+      <!-- <div class="col-sm-5">
 
-        <h3>Subjects:</h3>
+        <h4>Genre: {{book.genre}}</h4>
+
+        Subjects:
         <span ng-repeat="subject in book.subject_array">
-          <p>
-            {{subject}}
-          </p>
+          {{subject}}
         </span>
-        <h3>Genre</h3>
-        <p>
-          {{book.genre}}
-        </p>
 
-      </div>
+      </div> -->
     </div>
 
     <hr>

@@ -1,7 +1,7 @@
 body {
   padding-top: 70px;
   font-family: 'Roboto Slab', serif;
-  background-color: #ededed;
+  background-color: #D2D7D9;
   /*background: url('/app/images/books.jpg') center center cover no-repeat fixed;*/
 }
 
@@ -12,6 +12,14 @@ select {
 h2 {
   font-size: 25px;
   margin-top: 5px;
+}
+
+h3 {
+  margin-top: 5px;
+}
+
+hr {
+  border-color: white;
 }
 
 .login-page {
@@ -61,9 +69,20 @@ a:visited {
   text-decoration: none;
 }
 
+.dashboard-widget {
+  background-color: #585D62;
+}
+
+.dashboard-widget h2 {
+  padding: 10px;
+  color: white;
+}
+
 .search {
   /*margin-top: 20px;*/
   padding: 0 10px 0 10px;
+  background-color: white;
+  padding: 10px;
 }
 
 .filter {
@@ -97,7 +116,7 @@ a:visited {
 
 .badge-with-title {
   display: inline-block;
-  height: 115px;
+  /*height: 125px;*/
   width: 90px;
   margin: 5px;
   vertical-align: top;
@@ -109,7 +128,7 @@ a:visited {
   width: 85px;
   padding: 5px;
   /*margin: 5px;*/
-  background-color: #897dcd;
+  background-color: #00B6CC;
   display: inline-block;
 }
 
@@ -130,8 +149,34 @@ a:visited {
   padding-left: 0;
 }
 
-.book-details h2 {
+.book-display h2 {
   margin-top: 0;
+  margin-bottom: 0;
+  background-color: #05D885;
+  padding: 5px;
+}
+
+.book-display hr {
+  border-color: #bababa;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.book-details {
+  background-color: white;
+  padding: 5px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.add-book-btn {
+  float: right;
+  background: rgb(74, 147, 208);
+  margin-bottom: 10px;
+}
+
+.in-collection {
+  float: right;
 }
 
 .my-book-list {
@@ -144,7 +189,7 @@ a:visited {
 .navbar {
   list-style: none;
   display: inline-block;
-  background-color: #0FADCB;
+  background-color: #04ADBF;
   min-height: 70px;
   padding: 0;
   border: none;
