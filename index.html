@@ -4,8 +4,15 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app/css/style.css" media="screen" title="no title" charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+
+  <body>
+    <div ui-view="header"></div>
+    <div ui-view="content"></div>
+
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
     <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
     <script src="app/js/ui-bootstrap-tpls-0.9.0.js"></script>
@@ -20,11 +27,6 @@
     <script src="app/js/filters.js"></script>
     <script src="app/js/controllers/login.js"></script>
     <script src="app/js/services.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  </head>
 
-  <body>
-    <div ui-view="header"></div>
-    <div ui-view="content"></div>
   </body>
 </html>
