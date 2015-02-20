@@ -169,6 +169,7 @@ a:visited {
   padding: 5px;
   margin-left: 0;
   margin-right: 0;
+  border: 1px solid #cbcbcb;
 }
 
 .add-book-btn {

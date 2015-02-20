@@ -21,16 +21,20 @@
 
         <div class="row book-details">
             <div class="col-sm-7">
-              <p>{{book.description}}</p>
-              <hr>
-              <p><span class="glyphicon glyphicon-pencil"></span>Written by: {{book.author}}
-                <span class="glyphicon glyphicon-time"></span>
-                published: {{book.pub_date | date:'yyyy'}}
-                <span class="glyphicon glyphicon-book"></span>
-                {{book.pages}} pages
-                <button ng-click="addBook()" ng-if="!hasBook" class="add-book-btn btn btn-primary">Add Book</button>
-                <span class="in-collection" ng-if="hasBook">In collection!</span>
-              </p>
+              <div ng-if="book.description">
+                <p>{{book.description}}</p>
+                <hr>
+
+              </div>
+              <span ng-if="book.author" class="glyphicon glyphicon-pencil"></span>
+              <span ng-if="book.author">Written by: {{book.author}}</span>
+              <span ng-if="book.pub_date" class="glyphicon glyphicon-time"></span>
+              <span ng-if="book.pub_date">published: {{book.pub_date | date:'yyyy'}}</span>
+              <span ng-if="book.pages" class="glyphicon glyphicon-book"></span>
+              <span ng-if="book.pages">{{book.pages}} pages</span>
+              <button ng-click="addBook()" ng-if="!hasBook" class="add-book-btn btn btn-primary">Add Book</button>
+              <span class="in-collection" ng-if="hasBook">In collection!</span>
+
 
 
             </div>
@@ -41,7 +45,7 @@
                 <span class="glyphicon glyphicon-star"></span>
                 <strong>Genre:</strong> {{book.genre}}
               </p>
-              <p>
+              <p ng-if="subjects">
                 <span class="glyphicon glyphicon-star"></span>
                 <strong>Subjects: </strong>
                 <span ng-repeat="subject in subjects">{{subject.name}}, </span>
