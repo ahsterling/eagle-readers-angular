@@ -17,6 +17,8 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.results = false;
 
+
+
   $scope.bookSearch = function() {
     $scope.books = [];
     $scope.noResults = false;
@@ -82,6 +84,7 @@ booksControllerModule.controller('bookController', [
       $scope.book = data;
       getBookSubjects();
     });
+
 
     $scope.userBooks = [];
 

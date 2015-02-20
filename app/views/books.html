@@ -38,7 +38,6 @@
   </div>
   <div class="row ">
     <div class="col-xs-12">
-
       <div class="row">
         <div class="col-sm-2">
           <div class="search-terms" ng-hide="!results">
@@ -79,10 +78,20 @@
 
             <div ng-hide="books.length === 0">
               <div class="book-list">
-                <span class="book" ng-repeat="book in books | filter:query:strict">
-                  <a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a>
-                  <p>Author: {{book.author}}</p>
-                </span>
+                <div class="libro" ui-sref="app.books.detail({id:book.id})" ng-repeat= "book in books | filter:query:strict">
+                  <span></span>
+
+                  <!-- <a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a> -->
+                  <!-- <p>Author: {{book.author}}</p> -->
+                  <div class="title">
+                    {{book.title}}<br>
+                    <hr>
+                    {{book.author}}
+                  </div>
+
+                  <!-- <img src="http://3.bp.blogspot.com/-zLMPQdYLvDo/T7zOuqlGM8I/AAAAAAAAAok/4kJRErukfQc/s1600/libro1d.jpg" alt="" /> -->
+                </div>
+
               </div>
             </div>
 

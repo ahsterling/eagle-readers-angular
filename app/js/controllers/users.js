@@ -58,6 +58,20 @@ usersControllerModule.controller('userController', [
       });
     }
 
+    $scope.removeBook = function(book) {
+      $http.delete("http://54.213.100.80/user_books", {params: {book_id: book.id, user_id: $scope.user.id}})
+        .success(function(data) {
+          book.deleted = "deleted";
+        })
+        .error(function() {
+
+        })
+    }
+
+    var hideBook = function(book) {
+
+    }
+
     $scope.bookSearch = function() {
       var url = "http://54.213.100.80/books/search?";
 

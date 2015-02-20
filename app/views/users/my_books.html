@@ -32,13 +32,17 @@
       </div>
 
     </form>
+    {{deleted}}
     <table>
-      <tr ng-repeat="book in books | filter:query:strict">
+      <tr ng-repeat="book in books | filter:query:strict" ng-hide="book.deleted">
         <td>
           <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
         </td>
         <td>
           <h4>{{book.title}}</h4>
+        </td>
+        <td>
+          <span class="glyphicon glyphicon-remove" ng-click="removeBook(book)"></span>
         </td>
       </tr>
     </table>
