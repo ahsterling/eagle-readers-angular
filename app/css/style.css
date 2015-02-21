@@ -139,6 +139,79 @@ a:visited {
   /*margin: 5px;*/
   background-color: #EB7F00;
   display: inline-block;
+  border-radius: 10px;
+}
+
+.Eagles {
+  background-color: #094e98;
+}
+
+.Music {
+  background-color: #4f9a9a;
+}
+
+.Fantasy {
+  background-color: #b811e3;
+}
+
+.Horror {
+  background-color: #8a1b1b;
+}
+
+.Adventure {
+  background-color: #b0b0b0;
+}
+
+.Graphic {
+  background-color: red;
+}
+
+.Mystery {
+  background-color: #ff9100;
+}
+
+.Biography {
+  background-color: #198165;
+}
+
+.Sports {
+  background-color: #1a13fd;
+}
+
+.Poetry {
+  background-color: #b5ddbd;
+}
+
+.Animals {
+  background-color: #228a1e;
+}
+
+.Historical.Fiction {
+  background-color: #e4c03d;
+}
+
+.History {
+  background-color: #52c944;
+}
+
+.Science.Fiction {
+  background-color: yellow;
+}
+
+.Science {
+  background-color: #605594;
+}
+
+.Mythology {
+  background-color: #979797;
+}
+
+.Nonfiction {
+  background-color: #20c3c3;
+}
+
+.Fiction {
+  background-color: #9a1780;
 }
 
 .badge-text {
@@ -178,14 +251,16 @@ a:visited {
 }
 
 .add-book-btn {
-  float: right;
-  background: rgb(74, 147, 208);
-  margin-bottom: 10px;
+  /*background: rgb(74, 147, 208);*/
+  font-size: 14pt;
+  margin-top: 10px;
+  height: 145px;
 }
 
-.in-collection {
-  float: right;
-}
+/*.in-collection {
+  margin-left: 40px;
+  margin-top: 10px;
+}*/
 
 .my-book-list {
   /*max-height: 200px;
@@ -372,7 +447,7 @@ a:visited {
     transform: scaleX(0.88) scaleY(0.95);
 }
 .libro div {
-    background: #ACF0F2;
+    background: #b6b6b6;
     display: block;
     height: 175px;
     width: 129px;
@@ -384,6 +459,7 @@ a:visited {
     -o-transform: rotateY(-4deg) translateZ(0px);
     -ms-transform: rotateY(-4deg) translateZ(0px);
     transform: rotateY(-4deg) translateZ(0px);
+    overflow: scroll;
 }
 
 .libro .title {
@@ -403,7 +479,7 @@ position: absolute;
     position: absolute;
     right: -25px;
     top: 0%;
-    background: #89221B;
+    background: #f3b0f5;
     z-index: 2;
     -moz-transform: rotateY(-4deg) translateZ(0px);
     -webkit-transform: rotateY(-4deg) translateZ(0px);
@@ -415,7 +491,7 @@ position: absolute;
     background: #F5F5F5;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 18px 3px 20px rgba(0, 0, 0, 0.25) inset;
     height: 98%;
-    width: 23px;
+    width: 22px;
     right: -19px;
     top: 1%;
     z-index: 3;
@@ -434,7 +510,7 @@ position: absolute;
 .libro span {
     display: block;
     position: absolute;
-    bottom: -13px;
+    bottom: -1px;
     height: 100px;
     right: -110px;
     height: 100px;

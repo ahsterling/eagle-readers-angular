@@ -17,16 +17,19 @@
         </div>
       </div> -->
 
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <div class="libro">
           <span></span>
           <div class="title">
-            <a></a>{{book.title}}
+            <button ng-click="addBook()" ng-if="!hasBook" class="add-book-btn btn btn-default">Add Book</button>
+            <div class="in-collection" ng-if="hasBook">In collection!</div>
+
           </div>
         </div>
 
       </div>
       <div class="col-sm-9 book-display">
+        <h3>{{book.title}}</h3>
         <div ng-if="book.description" class="">
           {{book.description}}
           <hr>
@@ -41,8 +44,6 @@
         <span><strong>Genre: </strong>{{book.genre}}</span><br>
         <span class="glyphicon glyphicon-star"></span>
         <strong>Subjects: </strong><span ng-repeat="subject in subjects">{{subject.name}}, </span><br>
-        <button ng-click="addBook()" ng-if="!hasBook" class=" btn btn-default">Add Book</button>
-        <span class="in-collection" ng-if="hasBook">In collection!</span>
 
 
       </div>
