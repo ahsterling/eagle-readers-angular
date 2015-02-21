@@ -79,10 +79,13 @@ booksControllerModule.controller('bookController', [
 
   function($scope, $http, $stateParams, $rootScope, flashService, $modal) {
     $scope.book = {};
+    $scope.bookLoading = true;
+    $scope.buttonLoading = true;
 
     $http.get("http://54.213.100.80/books/" + $stateParams.id, {cache: true}).success(function(data) {
       $scope.book = data;
       getBookSubjects();
+      $scope.bookLoading = false;
     });
 
 
@@ -101,6 +104,7 @@ booksControllerModule.controller('bookController', [
         .success(function(data) {
           $scope.userBooks = data;
           $scope.hasBook = $scope.userHasBook();
+          $scope.buttonLoading = false;
         });
     };
 

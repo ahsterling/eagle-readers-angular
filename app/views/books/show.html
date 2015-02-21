@@ -18,7 +18,7 @@
       </div> -->
 
       <div class="col-md-2 col-sm-3 col-xs-offset-1">
-        <div class="libro">
+        <div ng-show="!bookLoading" class="libro">
           <span></span>
           <div class="{{book.genre}} title">
             {{book.title}}
@@ -28,11 +28,11 @@
 
 
       </div>
-      <div class="col-md-9 book-display">
+      <div class="col-md-9 book-display" ng-show="!bookLoading">
         <h3>
           {{book.title}}
-          <button ng-click="addBook()" ng-if="!hasBook" class="add-book-btn btn btn-default">Add Book</button>
-          <span class="in-collection" ng-if="hasBook"><small>In collection!</small></span>
+          <button ng-click="addBook()" ng-if="!hasBook" ng-show="!buttonLoading" class="add-book-btn btn btn-default">Add Book</button>
+          <span class="in-collection" ng-if="hasBook" ng-show="!buttonLoading"><small>In collection!</small></span>
 
         </h3>
 
