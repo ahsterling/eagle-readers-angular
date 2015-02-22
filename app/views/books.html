@@ -33,10 +33,10 @@
 
     </div>
   </div>
-  <div class="row">
+  <div class="row" style="-webkit-transform: translate3d(0px, 0px, 0px);">
     <div class="col-xs-12" ui-view="show"></div>
   </div>
-  <div class="row ">
+  <div class="row " style="-webkit-transform: translate3d(0px, 0px, 0px);">
     <div class="col-xs-12">
       <div class="row">
         <div class="col-sm-2">
@@ -65,7 +65,7 @@
         </div>
 
         <div class="col-sm-10">
-          <div class="book-search-results">
+          <div class="book-search-results" >
 
             <div ng-show="loadingResults">
               <p>Loading Search Results . . .</p>
@@ -75,14 +75,14 @@
             <div ng-show='noResults' class="error-message col-xs-12">
               Sorry, no results found.  Try searching again!
             </div>
-            <div ng-hide="books.length === 0">
+            <div ng-hide="books.length === 0" >
               <div class="book-list">
-                <div class="libro" ui-sref="app.books.detail({id:book.id})" ng-repeat= "book in books | filter:query:strict">
+                <div class="libro"  ui-sref="app.books.detail({id:book.id})" ng-repeat= "book in books | filter:query:strict">
                   <span></span>
 
                   <!-- <a ui-sref="app.books.detail({id:book.id})">{{book.title}}</a> -->
                   <!-- <p>Author: {{book.author}}</p> -->
-                  <div class="{{book.genre.name}} title">
+                  <div class="{{book.genre.name}} title" style="-webkit-transform: translate3d(0px, 0px, 0px);">
                     <strong>{{book.title}}</strong><br>
                     {{book.author}}
                   </div>
