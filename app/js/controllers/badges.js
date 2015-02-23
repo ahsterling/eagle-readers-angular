@@ -18,17 +18,58 @@ badgesControllerModule.controller('badgesController', [
       });
 
 
-    $scope.badgeShow = function(badge_id) {
+    $scope.showBadge = function(badge) {
 
       $modal.open({
         templateUrl: 'app/views/badges/badge_show.html',
-        controller: 'badgesController'
+        controller: 'badgesModalController',
+        resolve: {
+          badge: function() {
+            return badge;
+          }
+        }
+
       })
 
+      var getBadge = function(badge_id) {
+        $http.get('http://54.213.100.80/genre_badges/' + badge_id)
+          .success(function(data) {
+            $scope.badge = data;
+          })
+        return $scope.badge
+      }
     }
 
 
 }]);
+
+badgesControllerModule.controller('badgesModalController', [
+  '$http',
+  '$scope',
+  '$modalInstance',
+  'badge',
+
+  function($http, $scope, $modalInstance, badge) {
+
+    $scope.badge = badge;
+    // $scope.badgeLoading = true;
+
+
+
+    // $http.get('http://54.213.100.80/genre_badges/' + badge_id)
+    //   .success(function(data) {
+    //     $scope.badge = data;
+    //     $scope.badgeLoading = false;
+    //   })
+    //
+
+    $scope.closeModal = function() {
+      $modalInstance.close();
+    };
+
+
+
+  }])
 
 badgesControllerModule.controller('badgeController', [
   '$scope',

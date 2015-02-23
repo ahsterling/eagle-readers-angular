@@ -1,11 +1,17 @@
 <div ng-controller="badgesController">
   <div class="modal-header">
-    <h2>Title</h2>
+    <h2>{{badge.title}}</h2>
   </div>
 
   <div class="modal-body">
-    {{badge}}
+    <div ng-show="!badgeLoading" class="badge-display-lg {{badge.genre_name}}">
+      <img src="{{badge.image.preview.url}}" alt="" />
+    </div>
+    <span ng-show="!badgeLoading">{{badge.description}}</span>
+  </div>
 
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="closeModal()">OK</button>
   </div>
 
 </div>

@@ -11,17 +11,15 @@
         <p>
           Click a badge to see its descrption.
         </p>
-        <div ng-repeat="badge in badges | filter:query" class="badge-with-title" popover-placement="right" popover="{{badge.description}}" popover-title="{{badge.title}}">
-            <div class="badge-display {{badge.genre_name}}">
-              <img src="{{badge.image.thumb.url}}" alt="" />
-            </div>
-            <div>{{badge.title}}</div>
-          <!-- </a> -->
+        <div ng-repeat="badge in badges | filter:query" ng-click="showBadge(badge)"class="badge-with-title">
+          <div class="badge-display {{badge.genre_name}}">
+            <img src="{{badge.image.thumb.url}}" alt="" />
+          </div>
+          <div>{{badge.title}}</div>
         </div>
       </div>
 
     </div>
 
-  <!-- </div> -->
 
 </div>
