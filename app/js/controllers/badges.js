@@ -50,18 +50,7 @@ badgesControllerModule.controller('badgesModalController', [
   'badge',
 
   function($http, $scope, $modalInstance, badge) {
-
     $scope.badge = badge;
-    // $scope.badgeLoading = true;
-
-
-
-    // $http.get('http://54.213.100.80/genre_badges/' + badge_id)
-    //   .success(function(data) {
-    //     $scope.badge = data;
-    //     $scope.badgeLoading = false;
-    //   })
-    //
 
     $scope.closeModal = function() {
       $modalInstance.close();
