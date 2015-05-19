@@ -16,14 +16,14 @@ usersControllerModule.controller('userController', [
     $scope.loadingBooks = true;
     $scope.loadingBadges = true;
 
-    $http.get('http://54.213.100.80/users/' + $rootScope.user.id)
+    $http.get('http://localhost:3000/users/' + $rootScope.user.id)
       .success(function(data) {
         $scope.user = data;
         getUserBooks();
         getUserBadges();
     });
 
-    $http.get('http://54.213.100.80/users/' + $rootScope.user.id + '/books/genres')
+    $http.get('http://localhost:3000/users/' + $rootScope.user.id + '/books/genres')
       .success(function(data) {
         $scope.userGenres = data;
       });
@@ -37,7 +37,7 @@ usersControllerModule.controller('userController', [
     })
 
     var getUserBooks = function() {
-      $http.get("http://54.213.100.80/users/" + $scope.user.id + "/books")
+      $http.get("http://localhost:3000/users/" + $scope.user.id + "/books")
         .success(function(data) {
           $scope.books = data;
           $scope.loadingBooks = false;
@@ -48,7 +48,7 @@ usersControllerModule.controller('userController', [
     }
 
     var getUserBadges = function() {
-      $http.get("http://54.213.100.80/users/" + $scope.user.id + "/badges")
+      $http.get("http://localhost:3000/users/" + $scope.user.id + "/badges")
         .success(function(data) {
           $scope.badges = data;
           $scope.loadingBadges = false;
@@ -59,7 +59,7 @@ usersControllerModule.controller('userController', [
     }
 
     $scope.removeBook = function(book) {
-      $http.delete("http://54.213.100.80/user_books", {params: {book_id: book.id, user_id: $scope.user.id}})
+      $http.delete("http://localhost:3000/user_books", {params: {book_id: book.id, user_id: $scope.user.id}})
         .success(function(response, status, headers, config) {
           book.deleted = "deleted";
           // $location.path('dashboard');
@@ -71,7 +71,7 @@ usersControllerModule.controller('userController', [
 
 
     $scope.bookSearch = function() {
-      var url = "http://54.213.100.80/books/search?";
+      var url = "http://localhost:3000/books/search?";
 
       var titleParams, authorParams;
 

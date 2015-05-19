@@ -20,6 +20,16 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
       });
   };
 
+  $scope.submitAdminLogin = function() {
+    $auth.submitLogin($scope.adminLoginForm, {config: 'admin'})
+      .then(function(resp) {
+
+      })
+      .catch(function(resp) {
+
+      })
+  }
+
   $rootScope.$on('auth:login-success', function(ev, user) {
     console.log('login success')
     $rootScope.user = user;
@@ -49,6 +59,27 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
     } else {
       $scope.regError = "Passwords do not match"
     };
+
+  }
+
+  $scope.handleAdminRegClick = function() {
+    if ($scope.adminRegistrationForm.password === $scope.adminRegistrationForm.password_confirmation) {
+
+      $auth.submitRegistration($scope.adminRegistrationForm, {config: 'admin'})
+        .then(function() {
+          $auth.submitLogin({
+            email: $scope.adminRegistrationForm.email,
+            password: $scope.adminRegistrationForm.password
+          });
+      })
+      .catch(function(resp) {
+
+      });
+
+    } else {
+      $scope.regError = "Passwords do not match"
+    };
+
 
   }
 

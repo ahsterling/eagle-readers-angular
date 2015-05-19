@@ -9,16 +9,13 @@
             {{book.title}}
           </div>
         </div>
-
-
-
       </div>
+
       <div class="col-md-9 book-display" ng-show="!bookLoading">
         <h3>
           {{book.title}}
           <button ng-click="addBook()" ng-if="!hasBook" ng-show="!buttonLoading" class="add-book-btn btn btn-default">Add Book</button>
           <span class="in-collection" ng-if="hasBook" ng-show="!buttonLoading"><small>In collection!</small></span>
-
         </h3>
 
         <div ng-if="book.description" class="">
@@ -35,53 +32,8 @@
         <span><strong>Genre: </strong>{{book.genre}}</span>
         <span class="glyphicon glyphicon-star"></span>
         <strong>Subjects: </strong><span ng-repeat="subject in subjects">{{subject.name}}, </span><br>
-
-
       </div>
-
-      <!-- <div class="col-sm-10 book-display">
-        <h2>
-          {{book.title}}
-        </h2>
- -->
-        <!-- <div class="row book-details">
-            <div class="col-sm-12">
-              <div ng-if="book.description">
-                <p>{{book.description}}</p>
-              </div>
-              <span ng-if="book.author" class="glyphicon glyphicon-pencil"></span>
-              <div ng-if="book.author">Written by: {{book.author}}</div>
-              <span ng-if="book.pub_date" class="glyphicon glyphicon-time"></span>
-              <div ng-if="book.pub_date">published: {{book.pub_date | date:'yyyy'}}</div>
-              <span ng-if="book.pages" class="glyphicon glyphicon-book"></span>
-              <div ng-if="book.pages">{{book.pages}} pages</div>
-              <div>
-                <span class="glyphicon glyphicon-star"></span>
-                <strong>Genre:</strong> {{book.genre}}
-              </div>
-              <p ng-if="subjects">
-                <span class="glyphicon glyphicon-star"></span>
-                <strong>Subjects: </strong>
-                <span ng-repeat="subject in subjects">{{subject.name}}, </span>
-              </p> -->
-
-            <!-- </div> -->
-
-
-        <!-- </div> -->
-
-      <!-- <div class="col-sm-5">
-
-        <h4>Genre: {{book.genre}}</h4>
-
-        Subjects:
-        <span ng-repeat="subject in book.subject_array">
-          {{subject}}
-        </span>
-
-      </div> -->
     </div>
-
     <hr>
   </div>
 </div>

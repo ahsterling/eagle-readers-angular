@@ -21,6 +21,24 @@
 
             <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
           </form>
+          
+          <form ng-submit="submitAdminLogin(adminLoginForm)" role="form" ng-init="adminLoginForm = {}"class="login form">
+            <h2>Admin Log In</h2>
+            <hr>
+            <div class="form-group">
+              <input name="email" ng-model="adminLoginForm.email" required="required" class="form-control" placeholder="username"/>
+            </div>
+
+            <div class="form-group">
+              <input type="password" name="password" ng-model="adminLoginForm.password" class="form-control" placeholder="password"/>
+            </div>
+            <div class="error-message" ng-if="loginError">
+              {{loginError}}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+          </form>
+
 
         </div>
 
@@ -49,7 +67,30 @@
             </div>
             <button type="submit" class="btn btn-primary btn-lg">Register</button>
           </form>
+
+          <form ng-submit="handleAdminRegClick(adminRegistrationForm)" role="form" ng-init="adminRegistrationForm = {}" class='login form'>
+            <h2>Admin Registration</h2>
+            <hr>
+            <div class="form-group">
+              <label>email</label>
+              <input type="email" name="email" ng-model="adminRegistrationForm.email" required="required" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label>password</label>
+              <input type="password" name="password" ng-model="adminRegistrationForm.password" required="required" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label>password confirmation</label>
+              <input type="password" name="password_confirmation" ng-model="adminRegistrationForm.password_confirmation" required="required" class="form-control"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+          </form>
+
         </div>
+
       </div>
     </div>
   </div>

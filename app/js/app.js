@@ -14,11 +14,28 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
 ]);
 
 eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvider) {
-    $authProvider.configure({
-      apiUrl:  'http://54.213.100.80',
-      // apiUrl: 'http://localhost:3000',
-      storage: 'cookies'
-    })
+    $authProvider.configure([
+      {
+        default: {
+          apiUrl:  'http://54.213.100.80',
+          // apiUrl: 'http://localhost:3000',
+          storage: 'cookies'
+        }
+      }, {
+      admin: {
+        apiUrl:                'http://localhost:3000',
+        proxyIf:               function() { window.isOldIE() },
+        signOutUrl:            '/admin_auth/sign_out',
+        emailSignInPath:       '/admin_auth/sign_in',
+        emailRegistrationPath: '/admin_auth',
+        accountUpdatePath:     '/admin_auth',
+        accountDeletePath:     '/admin_auth',
+        passwordResetPath:     '/admin_auth/password',
+        passwordUpdatePath:    '/admin_auth/password',
+        tokenValidationPath:   '/admin_auth/validate_token',
+      }
+    }
+    ]);
     $stateProvider
     .state('app', {
       url: '/',
@@ -28,6 +45,19 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         },
         'content': {
             templateUrl: 'app/views/users/login.html'
+        }
+      }
+    })
+    .state('app.admin_dashboard', {
+      url: 'admin_dashboard',
+      views: {
+        'content@': {
+          templateUrl: 'app/views/admin/admin_dashboard.html'
+        }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser({config: 'admin'})
         }
       }
     })
