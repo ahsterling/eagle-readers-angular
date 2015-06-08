@@ -23,7 +23,7 @@ loginControllerModule.controller('loginController', ['$scope', '$state', '$rootS
   $scope.submitAdminLogin = function() {
     $auth.submitLogin($scope.adminLoginForm, {config: 'admin'})
       .then(function(resp) {
-
+          $state.go('app.admin_dashboard', {}, {reload: true});
       })
       .catch(function(resp) {
 

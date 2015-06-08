@@ -7,6 +7,7 @@ var eagleReadersApp = angular.module('eagleReadersApp', [
   'badgesControllerModule',
   'loginControllerModule',
   'indexControllerModule',
+  'adminControllerModule',
   'filtersModule',
   'ng-token-auth',
   'ipCookie',
@@ -23,7 +24,7 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
         }
       }, {
       admin: {
-        apiUrl:                'http://localhost:3000',
+        apiUrl:                'http://54.213.100.80',
         proxyIf:               function() { window.isOldIE() },
         signOutUrl:            '/admin_auth/sign_out',
         emailSignInPath:       '/admin_auth/sign_in',
@@ -53,6 +54,19 @@ eagleReadersApp.config(function($stateProvider, $urlRouterProvider, $authProvide
       views: {
         'content@': {
           templateUrl: 'app/views/admin/admin_dashboard.html'
+        }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser({config: 'admin'})
+        }
+      }
+    })
+    .state('app.admin_dashboard.edit_book', {
+      url: 'edit_book',
+      views: {
+        'content@': {
+          templateUrl: 'app/views/edit_book.html'
         }
       },
       resolve: {

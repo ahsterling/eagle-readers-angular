@@ -1,1 +1,36 @@
-THIS IS THE ADMIN DASHBOARD
+<h2>ADMIN DASH</h2>
+
+<div ng-controller="adminController" class="container-fluid search">
+  <div class="search row">
+    <div class="col-md-12">
+
+      <form class="form-inline">
+
+        <div class="form-group" >
+          <label>Search books by title:</label>
+          <input type="text" ng-model="search.title" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Search books by author:</label>
+          <input type="text" ng-model="search.author" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Search by genre:</label>
+          <select ng-model="search.genre" class="form-control">
+            <option value="">All Genres</option>
+            <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
+          </select>
+        </div>
+
+        <button class='btn btn-default' id="submit-search" ng-click ="bookSearch()">Search</button>
+
+      </form>
+    </div>
+  </div>
+
+  <div>
+    
+  </div>
+</div>

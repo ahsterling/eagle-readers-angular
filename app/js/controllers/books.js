@@ -17,8 +17,6 @@ booksControllerModule.controller('booksController', ['$scope', '$http', '$locati
 
   $scope.results = false;
 
-
-
   $scope.bookSearch = function() {
     $scope.books = [];
     $scope.noResults = false;
@@ -82,7 +80,7 @@ booksControllerModule.controller('bookController', [
     $scope.bookLoading = true;
     $scope.buttonLoading = true;
 
-    $http.get("http://localhost:3000/books/" + $stateParams.id, {cache: true}).success(function(data) {
+    $http.get("http://54.213.100.80/books/" + $stateParams.id, {cache: true}).success(function(data) {
       $scope.book = data;
       getBookSubjects();
       $scope.bookLoading = false;
@@ -93,14 +91,14 @@ booksControllerModule.controller('bookController', [
 
     $scope.user = $rootScope.user;
 
-    $http.get('http://localhost:3000/users/' + $scope.user.id)
+    $http.get('http://54.213.100.80/users/' + $scope.user.id)
       .success(function(data) {
         $scope.user = data;
         getUserBooks();
       });
 
     var getUserBooks = function() {
-      $http.get('http://localhost:3000/users/' + $scope.user.id + '/books')
+      $http.get('http://54.213.100.80/users/' + $scope.user.id + '/books')
         .success(function(data) {
           $scope.userBooks = data;
           $scope.hasBook = $scope.userHasBook();
@@ -111,7 +109,7 @@ booksControllerModule.controller('bookController', [
     $scope.subjects = [];
 
     getBookSubjects = function() {
-      $http.get('http://localhost:3000/books/' + $scope.book.id + '/subjects', {cache: true})
+      $http.get('http://54.213.100.80/books/' + $scope.book.id + '/subjects', {cache: true})
         .success(function(data) {
           $scope.subjects = data;
         });
@@ -129,7 +127,7 @@ booksControllerModule.controller('bookController', [
 
     $scope.addBook = function() {
 
-      $http.post("http://localhost:3000/users/" + $scope.user.id + "/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
+      $http.post("http://54.213.100.80/users/" + $scope.user.id + "/books/new", {book_id: $scope.book.id, user_id: $scope.user.id})
         .success(function(data) {
           console.log(data);
           $scope.badges = data.badges;
